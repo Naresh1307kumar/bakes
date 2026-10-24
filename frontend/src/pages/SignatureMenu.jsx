@@ -85,6 +85,28 @@ const ALL_PRODUCTS = [
     description: 'Grand celebratory brownie cake topped with authentic Ferrero Rocher truffles, golden sprinkles, chocolate drip, and personalized Birthday topper.',
     highlights: ['Ferrero Rocher Loaded', 'Golden Drip Ganache', 'Custom Birthday Topper Included']
   },
+  {
+    id: 14,
+    category: 'brownies',
+    name: 'Custom Celebration Brownie Slab',
+    price: 550,
+    weight: '1/2 KG Custom Message Slab',
+    image: '/assets/images/mom_dad_brownie_slab.jpg',
+    tag: 'Personalized Special',
+    description: 'Custom message brownie slab iced with piped greetings ("MOM DAD", Names, Anniversaries), glossy chocolate waves, and edible pearls.',
+    highlights: ['Custom Name & Message', 'Golden Pearl Accents', 'Rich Chocolate Swirls']
+  },
+  {
+    id: 15,
+    category: 'brownies',
+    name: 'Nutella Brownies Box',
+    price: 250,
+    weight: 'Takeaway Box of 4',
+    image: '/assets/images/nutella_brownies.jpg',
+    tag: 'Nutella Loaded',
+    description: 'Rich fudgy brownies generously iced with original Nutella chocolate hazelnut spread, white chocolate chips, and rainbow sprinkles.',
+    highlights: ['100% Nutella Glaze', 'White Chocolate Drops', 'Takeaway Ready Box']
+  },
 
   // 3. Mini Bytes & Bites (from Zugar Zinger Catalogue)
   {
