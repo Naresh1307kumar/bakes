@@ -61,7 +61,7 @@ export default function MenuSection() {
   return (
     <section id="menu" className="menu-home-section">
       <div className="menu-home-container">
-        
+
         {/* Section Header */}
         <div className="menu-home-header">
           <div className="menu-home-badge">
@@ -92,14 +92,14 @@ export default function MenuSection() {
 
             return (
               <div key={item.id} className="menu-card">
-                
+
                 {/* Product Image & Badges */}
                 <div className="menu-card-img-wrap">
                   <img src={item.image} alt={item.name} className="menu-card-img" />
                   <span className="menu-card-tag">{item.tag}</span>
                   <span className="menu-card-weight">{item.weight}</span>
                 </div>
-                
+
                 {/* Product Details Body */}
                 <div className="menu-card-info">
                   <div className="menu-card-title-row">
@@ -121,16 +121,16 @@ export default function MenuSection() {
                   {/* Quantity & Order Row */}
                   <div className="menu-card-controls">
                     <div className="menu-qty-box">
-                      <button 
-                        className="menu-qty-btn" 
+                      <button
+                        className="menu-qty-btn"
                         onClick={() => updateQuantity(item.id, -1)}
                         aria-label="Decrease"
                       >
                         -
                       </button>
                       <span className="menu-qty-val">{qty}</span>
-                      <button 
-                        className="menu-qty-btn" 
+                      <button
+                        className="menu-qty-btn"
                         onClick={() => updateQuantity(item.id, 1)}
                         aria-label="Increase"
                       >
@@ -138,7 +138,7 @@ export default function MenuSection() {
                       </button>
                     </div>
 
-                    <button 
+                    <button
                       type="button"
                       onClick={() => setActiveModalProduct(item)}
                       className="btn-menu-order"
@@ -159,7 +159,7 @@ export default function MenuSection() {
         </div>
 
         {/* Link to Full Menu Footer Strip */}
-        <div className="menu-home-footer-cta">
+        {/* <div className="menu-home-footer-cta">
           <p>Looking for Rasamalai Dream Cakes, Cookies, Cupcakes & Custom Platters?</p>
           <Link 
             to="/menu" 
@@ -168,10 +168,10 @@ export default function MenuSection() {
             <span>View All Menu</span>
             <ArrowRight size={16} />
           </Link>
-        </div>
+        </div>*/ }
 
         {/* Swiggy/Zomato style Delivery Address Modal */}
-        <DeliveryModal 
+        <DeliveryModal
           isOpen={!!activeModalProduct}
           onClose={() => setActiveModalProduct(null)}
           product={activeModalProduct}
