@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Check, ArrowRight, MessageSquare, Play, Pause, ShoppingBag } from 'lucide-react';
+import { Sparkles, Check, ArrowRight, MessageSquare } from 'lucide-react';
 import DeliveryModal from './DeliveryModal';
 import './MenuSection.css';
 
@@ -53,11 +53,7 @@ const SIGNATURE_SLABS = [
 export default function MenuSection() {
   const [quantities, setQuantities] = useState({ 1: 1, 2: 1, 3: 1, 4: 1 });
   const [activeModalProduct, setActiveModalProduct] = useState(null);
-
-  // Rounding carousel state
-  const [isSpinning, setIsSpinning] = useState(true);
   const [selectedSlab, setSelectedSlab] = useState(SIGNATURE_SLABS[1]); // Default to Nutella
-  const [showMenuDetails, setShowMenuDetails] = useState(true);
 
   const selectedQty = quantities[selectedSlab.id] || 1;
   const selectedTotalPrice = selectedSlab.price * selectedQty;
@@ -69,15 +65,9 @@ export default function MenuSection() {
     }));
   };
 
-  // When a card is touched: stop rounding and show its menu
-  const handleCardTouch = (slab) => {
-    setIsSpinning(false);
+  // When card is clicked: shows its menu details
+  const handleCardClick = (slab) => {
     setSelectedSlab(slab);
-    setShowMenuDetails(true);
-  };
-
-  const handleToggleSpin = () => {
-    setIsSpinning(prev => !prev);
   };
 
   return (
@@ -94,33 +84,13 @@ export default function MenuSection() {
             Our Signature <span className="highlight-text">Brownie Slabs</span>
           </h2>
           <p className="menu-home-subtitle">
-            1/2 KG of pure chocolate bliss. First the 4 cards are rounding — touch any card to reveal its full menu & order directly.
+            1/2 KG of pure chocolate bliss. Hover to pause rounding, and click any card to view its menu & order.
           </p>
-
-          {/* Rounding Status & Control Bar */}
-          <div className="rounding-status-bar">
-            <button 
-              className={`btn-spin-toggle ${isSpinning ? 'active-spinning' : ''}`}
-              onClick={handleToggleSpin}
-              title={isSpinning ? 'Pause rounding' : 'Resume rounding'}
-            >
-              {isSpinning ? (
-                <>
-                  <Pause size={15} />
-                  <span>Rounding in 3D (Touch any card to view menu)</span>
-                </>
-              ) : (
-                <>
-                  <Play size={15} />
-                  <span>Resume Rounding Animation</span>
-                </>
-              )}
-            </button>
-          </div>
         </div>
 
         {/* ========================================================
             THE 3D ROUNDING CAROUSEL OF THE 4 SIGNATURE SLABS
+            (Stops rounding on hover; click shows menu details)
             ======================================================== */}
         <div className="rounding-viewport">
           
@@ -128,7 +98,7 @@ export default function MenuSection() {
           <div className="rounding-ambient-glow"></div>
 
           {/* 3D Orbit Ring */}
-          <div className={`rounding-ring ${isSpinning ? 'spinning' : 'paused'}`}>
+          <div className="rounding-ring">
             {SIGNATURE_SLABS.map((slab, index) => {
               const isSelected = selectedSlab.id === slab.id;
 
@@ -136,8 +106,8 @@ export default function MenuSection() {
                 <div
                   key={slab.id}
                   className={`rounding-card-item card-pos-${index} ${isSelected ? 'active-selected' : ''}`}
-                  onClick={() => handleCardTouch(slab)}
-                  title={`Touch to view menu for ${slab.name}`}
+                  onClick={() => handleCardClick(slab)}
+                  title={`Click to view details for ${slab.name}`}
                 >
                   {/* Card Gloss Sheen */}
                   <div className="rounding-card-sheen"></div>
@@ -159,7 +129,7 @@ export default function MenuSection() {
                     <div className="rounding-card-price-row">
                       <span className="rounding-card-price">₹{slab.price}</span>
                       <span className="rounding-card-tap-hint">
-                        {isSelected ? '✓ Showing Menu' : '👉 Touch Card'}
+                        {isSelected ? '✓ Showing Details' : 'Click to View'}
                       </span>
                     </div>
                   </div>
@@ -171,25 +141,11 @@ export default function MenuSection() {
 
         </div>
 
-        {/* Quick Flavor Selector Pills */}
-        <div className="rounding-flavor-tabs">
-          {SIGNATURE_SLABS.map((slab) => (
-            <button
-              key={slab.id}
-              className={`rounding-tab-btn ${selectedSlab.id === slab.id ? 'active' : ''}`}
-              onClick={() => handleCardTouch(slab)}
-            >
-              <span>{slab.shortName}</span>
-              <small>₹{slab.price}</small>
-            </button>
-          ))}
-        </div>
-
         {/* ========================================================
-            REVEALED MENU CARD (Shown when user touches a card)
+            REVEALED MENU CARD (Shown when user clicks a card)
             ======================================================== */}
-        {showMenuDetails && (
-          <div className="revealed-menu-card animate-fade-in">
+        {selectedSlab && (
+          <div className="revealed-menu-card animate-fade-in" id="selected-slab-menu">
             
             <div className="revealed-menu-header">
               <div className="revealed-title-group">
@@ -246,19 +202,6 @@ export default function MenuSection() {
                 <MessageSquare size={17} />
                 <span>Order {selectedSlab.shortName} (₹{selectedTotalPrice})</span>
               </button>
-
-              {/* Resume Rounding Button */}
-              {!isSpinning && (
-                <button 
-                  type="button" 
-                  onClick={handleToggleSpin} 
-                  className="btn-resume-spin"
-                  title="Resume the rounding animation"
-                >
-                  <Play size={15} />
-                  <span>Resume Rounding</span>
-                </button>
-              )}
 
             </div>
 
