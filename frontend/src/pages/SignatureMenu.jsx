@@ -1,106 +1,170 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, MessageSquare, Phone, Check, Award, ArrowLeft, CheckCircle2, Truck, MapPin } from 'lucide-react';
+import { Sparkles, MessageSquare, Phone, Check, Award, ArrowLeft, CheckCircle2, MapPin } from 'lucide-react';
 import DeliveryModal from '../components/DeliveryModal';
 import './SignatureMenu.css';
 
 const ALL_PRODUCTS = [
-  // 1/2 KG Signature Slabs
+  // 1. Dream Cakes (from Zugar Zinger Catalogue)
   {
     id: 1,
-    category: 'slabs',
-    name: 'Classic Brownie Slab',
-    price: 400,
-    weight: '1/2 KG Slab',
-    image: '/assets/images/classic.png',
-    tag: 'Signature Slab',
-    description: 'Our traditional recipe featuring a deep, rich dark chocolate base with our signature glossy, crinkly top crust.',
-    highlights: ['Pure Dutch Cocoa', 'Glossy Crinkly Crust', 'Melt-in-mouth Texture']
+    category: 'dreamcakes',
+    name: 'Special Dream Cake with Toppers',
+    price: 500,
+    weight: '1/2 KG & 1 KG Available',
+    image: '/assets/images/dream_cake_toppers.jpg',
+    tag: 'Bestseller',
+    description: 'Our famous 5-layer decadent chocolate dream cake in a premium tin, finished with customized cake toppers for birthdays & anniversaries.',
+    highlights: ['5 Decadent Layers', 'Custom Topper Included', 'Available in 1/2kg & 1kg']
   },
   {
     id: 2,
-    category: 'slabs',
-    name: 'Nutella Brownie Slab',
-    price: 450,
-    weight: '1/2 KG Slab',
-    image: '/assets/images/nutella.png',
-    tag: 'Bestseller',
-    description: 'Swirled generously with silky authentic hazelnut Nutella spread both inside the batter and on top for an ultra-decadent bite.',
-    highlights: ['Real Hazelnut Nutella', 'Gooey Fudgy Core', 'Creamy Chocolate Swirls']
+    category: 'dreamcakes',
+    name: 'Chocolate Dream Cake Mini',
+    price: 150,
+    weight: 'Mini Tub (Min. Order ₹300)',
+    image: '/assets/images/dream_cake_mini.jpg',
+    tag: 'Trending Mini',
+    description: 'Individual mini tub of decadent chocolate dream cake with molten chocolate ganache and premium cocoa dusting.',
+    highlights: ['Molten Chocolate Ganache', 'Rich Sponge Layer', 'Minimum Order Value ₹300']
   },
   {
     id: 3,
-    category: 'slabs',
-    name: 'Fudgy Brownie Slab',
-    price: 450,
-    weight: '1/2 KG Slab',
-    image: '/assets/images/fudgy.png',
-    tag: 'Dense & Rich',
-    description: 'Intensely dense, moist, and loaded with pockets of molten chocolate. Specially crafted for true dark chocolate lovers.',
-    highlights: ['Double Dark Chocolate', 'Ultra Moist & Dense', 'Molten Cocoa Pockets']
-  },
-  {
-    id: 4,
-    category: 'slabs',
-    name: 'Nutty Brownie Slab',
-    price: 500,
-    weight: '1/2 KG Slab',
-    image: '/assets/images/nutty.png',
-    tag: 'Premium Crunch',
-    description: 'Generously packed with slow-roasted Californian walnuts and crunchy cashews, balancing rich cocoa with a nutty bite.',
-    highlights: ['Roasted Walnuts & Cashews', 'Crunchy Textured Bite', 'Pairs Great with Ice Cream']
+    category: 'dreamcakes',
+    name: 'Dream Cake Mini Rasamalai (Customized)',
+    price: 300,
+    weight: 'Mini Fusion Tub',
+    image: '/assets/images/dream_cake_rasamalai.jpg',
+    tag: 'Fusion Special',
+    description: 'Unique Indian fusion dessert combining authentic rasamalai milk infusion, soft sponge, and rich cream layer. Custom varieties available.',
+    highlights: ['Real Rasamalai Infusion', 'Saffron Cream Layer', 'Customization Available']
   },
 
-  // Combo Boxes & Packs
+  // 2. Brownies & Slabs (from Zugar Zinger Catalogue)
+  {
+    id: 4,
+    category: 'brownies',
+    name: 'Premium Brownie Hamper (Customized)',
+    price: 400,
+    weight: 'Customized Box',
+    image: '/assets/images/brownie_hamper.jpg',
+    tag: 'Popular Hamper',
+    description: 'Assorted brownie box customized with premium toppings including KitKat, Oreo, chocolate chips, and roasted walnuts.',
+    highlights: ['KitKat & Oreo Toppings', 'Roasted Crunchy Nuts', 'Special Discounts Available']
+  },
   {
     id: 5,
-    category: 'combos',
-    name: 'Mini Combo Box',
-    price: 150,
-    weight: '4 Brownies + 2 Cookies',
-    image: '/assets/images/classic.png',
-    tag: 'Value Combo',
-    description: 'The perfect snacking combo box containing 4 bite-sized chocolate brownies and 2 freshly baked artisan cookies.',
-    highlights: ['4 Fudgy Brownies', '2 Artisan Cookies', 'Freshly Baked Daily']
+    category: 'brownies',
+    name: 'Classic Brownies',
+    price: 45,
+    weight: '₹45/pc (Min. 5 pieces for delivery)',
+    image: '/assets/images/classic_brownies_stack.jpg',
+    tag: 'Artisanal Classic',
+    description: 'Traditional rich fudge brownies baked with pure cocoa and real dairy butter, featuring our signature glossy crinkly top crust.',
+    highlights: ['Pure Cocoa & Dairy Butter', 'Glossy Crinkly Crust', 'Minimum 5 Pcs for Delivery (₹225)']
   },
   {
     id: 6,
-    category: 'combos',
-    name: 'Medium Combo Box',
-    price: 200,
-    weight: '5 Brownies + 3 Cookies',
-    image: '/assets/images/nutella.png',
-    tag: 'Popular Sharing Box',
-    description: 'Our most popular sharing pack. Includes 5 decadent fudgy brownies accompanied by 3 rich chocolate cookies.',
-    highlights: ['5 Decadent Brownies', '3 Chocolate Cookies', 'Perfect for Small Gatherings']
+    category: 'brownies',
+    name: 'Brownie Slab 1/2kg (Heart Shape Anniversary Special)',
+    price: 500,
+    weight: '1/2 KG Heart Slab',
+    image: '/assets/images/heart_brownie_slab.jpg',
+    tag: 'Anniversary Special',
+    description: 'Heart-shaped decadent brownie slab decorated with golden pearl beads and a custom golden heart centerpiece. Perfect for anniversaries & romance.',
+    highlights: ['Special Heart Shape', 'Golden Pearl Toppings', 'Anniversary Greeting Tag']
   },
   {
     id: 7,
-    category: 'combos',
-    name: 'Grand Celebration Gift Box',
-    price: 550,
-    weight: 'Assorted Premium Box',
-    image: '/assets/images/hero.png',
-    tag: 'Festive & Gifting',
-    description: 'Luxurious gift-wrapped box featuring assorted brownie slices, cookies, and personalized greeting ribbons. Perfect for birthdays & festivals.',
-    highlights: ['Assorted Flavors', 'Satin Ribbon Packaging', 'Free Greeting Card']
+    category: 'brownies',
+    name: 'Birthday Rocher Brownie Cake',
+    price: 1000,
+    weight: 'Celebration Luxury Cake',
+    image: '/assets/images/birthday_rocher_brownie.jpg',
+    tag: 'Celebration Luxury',
+    description: 'Grand celebratory brownie cake topped with authentic Ferrero Rocher truffles, golden sprinkles, chocolate drip, and personalized Birthday topper.',
+    highlights: ['Ferrero Rocher Loaded', 'Golden Drip Ganache', 'Custom Birthday Topper Included']
   },
+
+  // 3. Mini Bytes & Bites (from Zugar Zinger Catalogue)
   {
     id: 8,
-    category: 'combos',
-    name: 'Choco Chunk Cookies Pack',
+    category: 'snacks',
+    name: 'Mini Bytes',
+    price: 120,
+    weight: 'Pack of Bars (Min. Order ₹350)',
+    image: '/assets/images/mini_bytes.jpg',
+    tag: 'Snack Favorite',
+    description: 'Bite-sized nutty chocolate brownie fingers dipped in creamy milk chocolate and coated generously with roasted nuts.',
+    highlights: ['Roasted Nutty Coating', 'Fudgy Brownie Fingers', 'Minimum Order Value ₹350']
+  },
+  {
+    id: 9,
+    category: 'snacks',
+    name: 'Plum Cakes',
+    price: 350,
+    weight: 'Rich Fruit Loaf',
+    image: '/assets/images/plum_cake.jpg',
+    tag: 'Festive Special',
+    description: 'Traditional spiced plum cake enriched with slow-soaked dried fruits, cashews, and aromatic spices. Price may differ with current offers.',
+    highlights: ['Slow Soaked Fruits', 'Rich Festive Spices', 'DM for Current Offers']
+  },
+  {
+    id: 10,
+    category: 'snacks',
+    name: 'Brownie with Vanilla Ice Cream',
+    price: 120,
+    weight: 'Dine/Takeaway Dessert Special',
+    image: '/assets/images/brownie_ice_cream.jpg',
+    tag: 'Dessert Special',
+    description: 'Warm fudgy chocolate brownie paired with chilled vanilla ice cream and hot chocolate fudge syrup drizzle.',
+    highlights: ['Hot Sizzling Brownie', 'Creamy Vanilla Scoop', 'Chocolate Fudge Drizzle']
+  },
+  {
+    id: 11,
+    category: 'snacks',
+    name: 'Freshly Baked Cookies',
     price: 180,
-    weight: 'Pack of 6 Cookies',
-    image: '/assets/images/fudgy.png',
-    tag: 'Artisan Cookies',
-    description: 'Crisp on the edges and soft-baked chewy in the center, loaded with premium melted chocolate chunks.',
-    highlights: ['100% Butter Baked', 'Loaded Choco Chunks', 'No Added Preservatives']
+    weight: 'Pack of Artisan Cookies',
+    image: '/assets/images/cookies.jpg',
+    tag: '100% Butter Baked',
+    description: 'Crispy edges with a soft-baked chewy center, loaded with chocolate chunks and baked fresh with dairy butter.',
+    highlights: ['Loaded Choco Chunks', '100% Pure Butter', 'Freshly Baked Daily']
+  },
+  {
+    id: 12,
+    category: 'snacks',
+    name: 'Cupcakes Box',
+    price: 150,
+    weight: 'Pack of Cupcakes',
+    image: '/assets/images/cupcakes.jpg',
+    tag: 'Party Favorite',
+    description: 'Soft, spongy cupcakes frosted with silky chocolate and vanilla buttercream. Great for kids parties and celebrations.',
+    highlights: ['Buttercream Swirl', 'Soft & Spongy', 'Great for Parties']
+  },
+  {
+    id: 13,
+    category: 'snacks',
+    name: 'Assorted Handcrafted Chocolates',
+    price: 250,
+    weight: 'Artisan Gifting Box',
+    image: '/assets/images/assorted_chocolates.jpg',
+    tag: 'Gifting Box',
+    description: 'Handmade artisan chocolates with dark, milk, and nutty fillings, gift-boxed for festivals and celebrations.',
+    highlights: ['Assorted Fillings', 'Gift Wrapped Box', 'Pure Artisan Chocolate']
   }
 ];
 
 export default function SignatureMenu() {
   const [activeTab, setActiveTab] = useState('all');
-  const [quantities, setQuantities] = useState({ 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1 });
+  const [quantities, setQuantities] = useState(() => {
+    const init = {};
+    ALL_PRODUCTS.forEach(p => {
+      // For classic brownies (id=5), default quantity is 5 pieces (₹225)
+      init[p.id] = p.id === 5 ? 5 : 1;
+    });
+    return init;
+  });
   const [activeModalProduct, setActiveModalProduct] = useState(null);
 
   useEffect(() => {
@@ -108,10 +172,14 @@ export default function SignatureMenu() {
   }, []);
 
   const updateQuantity = (id, delta) => {
-    setQuantities(prev => ({
-      ...prev,
-      [id]: Math.max(1, (prev[id] || 1) + delta)
-    }));
+    setQuantities(prev => {
+      const minQty = id === 5 ? 5 : 1; // Minimum 5 for single brownies
+      const step = id === 5 ? (delta > 0 ? 5 : -5) : delta;
+      return {
+        ...prev,
+        [id]: Math.max(minQty, (prev[id] || minQty) + step)
+      };
+    });
   };
 
   const filteredProducts = activeTab === 'all' 
@@ -138,7 +206,7 @@ export default function SignatureMenu() {
               <span className="brand-icon">✨</span>
               <span className="brand-text">Zugar Zinger</span>
             </Link>
-            <span className="standalone-tag">Full Menu</span>
+            <span className="standalone-tag">Official Menu</span>
           </div>
 
           <div className="standalone-nav-right">
@@ -170,7 +238,7 @@ export default function SignatureMenu() {
               Our Complete <span className="highlight-text">Menu & Delights</span>
             </h1>
             <p className="menu-subtitle">
-              Freshly baked 1/2 KG brownie slabs, mini snack boxes, and celebration gift hampers delivered across Madurai.
+              Handcrafted Dream Cakes, signature Brownie Slabs, Mini Bytes, and celebration gift hampers delivered across Madurai.
             </p>
           </div>
 
@@ -191,23 +259,29 @@ export default function SignatureMenu() {
               All Items ({ALL_PRODUCTS.length})
             </button>
             <button 
-              className={`filter-tab ${activeTab === 'slabs' ? 'active' : ''}`}
-              onClick={() => setActiveTab('slabs')}
+              className={`filter-tab ${activeTab === 'dreamcakes' ? 'active' : ''}`}
+              onClick={() => setActiveTab('dreamcakes')}
             >
-              1/2 KG Signature Slabs (4)
+              Dream Cakes (3)
             </button>
             <button 
-              className={`filter-tab ${activeTab === 'combos' ? 'active' : ''}`}
-              onClick={() => setActiveTab('combos')}
+              className={`filter-tab ${activeTab === 'brownies' ? 'active' : ''}`}
+              onClick={() => setActiveTab('brownies')}
             >
-              Combo Boxes & Cookie Packs (4)
+              Brownies & Slabs (4)
+            </button>
+            <button 
+              className={`filter-tab ${activeTab === 'snacks' ? 'active' : ''}`}
+              onClick={() => setActiveTab('snacks')}
+            >
+              Mini Bytes & Treats (6)
             </button>
           </div>
 
           {/* Product Cards Grid */}
           <div className="products-grid">
             {filteredProducts.map((product) => {
-              const qty = quantities[product.id] || 1;
+              const qty = quantities[product.id] || (product.id === 5 ? 5 : 1);
               const totalPrice = product.price * qty;
 
               return (
@@ -219,6 +293,7 @@ export default function SignatureMenu() {
                       src={product.image} 
                       alt={product.name} 
                       className="product-image"
+                      loading="lazy"
                     />
                     <div className="product-tag-chip">
                       {product.tag}
@@ -235,6 +310,7 @@ export default function SignatureMenu() {
                       <div className="product-price">
                         <span className="currency">₹</span>
                         <span className="amount">{product.price}</span>
+                        {product.id === 5 && <span className="price-unit">/pc</span>}
                       </div>
                     </div>
 

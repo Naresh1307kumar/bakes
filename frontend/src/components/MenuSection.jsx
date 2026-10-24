@@ -6,47 +6,47 @@ import './MenuSection.css';
 const SIGNATURE_SLABS = [
   {
     id: 1,
-    name: 'Classic Brownie Slab',
-    shortName: 'Classic',
-    price: 400,
-    weight: '1/2 KG Slab',
-    image: '/assets/images/classic.png',
-    tag: 'Timeless Original',
-    desc: 'Rich, dark, and perfectly balanced cocoa with our signature crinkly top crust. The ultimate gold standard of chocolate baking.',
-    highlights: ['Pure Dutch Cocoa', 'Glossy Crinkly Crust', 'Melt-in-mouth Center', '100% Dairy Butter']
+    name: 'Brownie Slab 1/2kg (Heart Anniversary Special)',
+    shortName: 'Heart Brownie Slab',
+    price: 500,
+    weight: '1/2 KG Heart Slab',
+    image: '/assets/images/heart_brownie_slab.jpg',
+    tag: 'Anniversary Special',
+    desc: 'Heart-shaped decadent brownie slab decorated with golden pearl beads and a custom golden heart centerpiece. Perfect for anniversaries, birthdays & special moments.',
+    highlights: ['Anniversary Special', 'Heart Shape Design', 'Golden Pearl Beads', 'Custom Greetings Included']
   },
   {
     id: 2,
-    name: 'Nutella Brownie Slab',
-    shortName: 'Nutella',
-    price: 450,
-    weight: '1/2 KG Slab',
-    image: '/assets/images/nutella.png',
-    tag: 'Bestseller',
-    desc: 'Our classic fudgy base swirled generously with silky authentic hazelnut Nutella spread for an ultra-decadent experience.',
-    highlights: ['Real Hazelnut Nutella', 'Gooey Fudgy Core', 'Velvety Chocolate Swirls', 'Slow-baked Daily']
+    name: 'Premium Brownie Hamper (Customized)',
+    shortName: 'Brownie Hamper',
+    price: 400,
+    weight: 'Customized Box',
+    image: '/assets/images/brownie_hamper.jpg',
+    tag: 'Bestseller Hamper',
+    desc: 'Assorted artisan brownie box customized with premium toppings including KitKat, Oreo, chocolate chips, and roasted walnuts.',
+    highlights: ['KitKat & Oreo Toppings', 'Roasted Crunchy Nuts', 'Special Discounts Box', 'Freshly Baked Daily']
   },
   {
     id: 3,
-    name: 'Fudgy Brownie Slab',
-    shortName: 'Fudgy',
-    price: 450,
-    weight: '1/2 KG Slab',
-    image: '/assets/images/fudgy.png',
-    tag: 'Dense & Rich',
-    desc: 'Ultra dense, gooey chocolate center that melts softly with every single bite. Specially crafted for true dark cocoa lovers.',
-    highlights: ['Double Dark Chocolate', 'Ultra Moist Texture', 'Molten Cocoa Pockets', 'Zero Preservatives']
+    name: 'Special Dream Cake with Toppers',
+    shortName: 'Dream Cake',
+    price: 500,
+    weight: '1/2 KG Tin Cake',
+    image: '/assets/images/dream_cake_toppers.jpg',
+    tag: '5-Layer Trending',
+    desc: 'Our famous 5-layer chocolate dream cake in a premium keepsake tin, finished with customized cake toppers for celebrations.',
+    highlights: ['5 Decadent Layers', 'Molten Chocolate Ganache', 'Custom Topper Included', 'Available in 1/2kg & 1kg']
   },
   {
     id: 4,
-    name: 'Nutty Brownie Slab',
-    shortName: 'Nutty',
-    price: 500,
-    weight: '1/2 KG Slab',
-    image: '/assets/images/nutty.png',
-    tag: 'Premium Crunch',
-    desc: 'Packed generously with slow-roasted Californian walnuts and crunchy cashews, balancing rich cocoa with a satisfying crunch.',
-    highlights: ['Roasted Walnuts & Cashews', 'Crunchy Textured Bite', 'Pairs Great with Ice Cream', 'Artisanal Batch']
+    name: 'Mini Bytes',
+    shortName: 'Mini Bytes',
+    price: 120,
+    weight: 'Pack of Bars (Min. Order ₹350)',
+    image: '/assets/images/mini_bytes.jpg',
+    tag: 'Snack Favorite',
+    desc: 'Bite-sized nutty chocolate brownie fingers dipped in creamy milk chocolate and coated generously with roasted nuts.',
+    highlights: ['Roasted Nutty Coating', 'Fudgy Brownie Fingers', 'Bite-sized Snacking', 'Minimum Order ₹350']
   }
 ];
 

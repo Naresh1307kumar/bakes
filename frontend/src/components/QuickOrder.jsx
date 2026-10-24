@@ -3,13 +3,18 @@ import { ShoppingBag, MapPin, Navigation, MessageSquare, CheckCircle2, Phone, Cl
 import './QuickOrder.css';
 
 const ORDER_ITEMS = [
-  { name: 'Classic Brownie Slab (1/2 KG)', price: 400 },
-  { name: 'Nutella Brownie Slab (1/2 KG)', price: 450 },
-  { name: 'Fudgy Brownie Slab (1/2 KG)', price: 450 },
-  { name: 'Nutty Brownie Slab (1/2 KG)', price: 500 },
-  { name: 'Mini Combo Box (4 Brownies + 2 Cookies)', price: 150 },
-  { name: 'Medium Combo Box (5 Brownies + 3 Cookies)', price: 200 },
-  { name: 'Grand Celebration Gift Box', price: 550 }
+  { name: 'Special Dream Cake with Toppers (1/2 KG) — ₹500', price: 500 },
+  { name: 'Brownie Slab 1/2kg (Heart Anniversary Special) — ₹500', price: 500 },
+  { name: 'Premium Brownie Hamper (Customized) — ₹400', price: 400 },
+  { name: 'Birthday Rocher Brownie Cake — ₹1000', price: 1000 },
+  { name: 'Chocolate Dream Cake Mini — ₹150', price: 150 },
+  { name: 'Dream Cake Mini Rasamalai — ₹300', price: 300 },
+  { name: 'Classic Brownies Pack (5 pcs) — ₹225', price: 225 },
+  { name: 'Mini Bytes Snack Pack — ₹120', price: 120 },
+  { name: 'Plum Cake Rich Loaf — ₹350', price: 350 },
+  { name: 'Freshly Baked Cookies Pack — ₹180', price: 180 },
+  { name: 'Cupcakes Box — ₹150', price: 150 },
+  { name: 'Assorted Handcrafted Chocolates — ₹250', price: 250 }
 ];
 
 export default function QuickOrder() {
