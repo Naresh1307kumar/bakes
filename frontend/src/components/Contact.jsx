@@ -59,7 +59,7 @@ export default function Contact() {
           {/* Left Column: Direct Contact Info Cards */}
           <div className="contact-info-col">
             
-            <div className="contact-card">
+            <div className="contact-card card-whatsapp">
               <div className="contact-icon-box">
                 <Phone size={24} />
               </div>
@@ -72,7 +72,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-card">
+            <div className="contact-card card-phone">
               <div className="contact-icon-box">
                 <Phone size={24} />
               </div>
@@ -85,7 +85,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-card">
+            <div className="contact-card card-location">
               <div className="contact-icon-box">
                 <MapPin size={24} />
               </div>
@@ -96,7 +96,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-card">
+            <div className="contact-card card-delivery">
               <div className="contact-icon-box">
                 <Truck size={24} />
               </div>
@@ -209,13 +209,13 @@ export default function Contact() {
           </div>
 
           <div className="footer-socials">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon">
+            <a href="https://www.instagram.com/zugar_zinger" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon social-ig">
               <Instagram size={18} />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-icon">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-icon social-fb">
               <Facebook size={18} />
             </a>
-            <a href="https://wa.me/919489443693" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="social-icon">
+            <a href="https://wa.me/919489443693" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="social-icon social-wa">
               <MessageSquare size={18} />
             </a>
           </div>

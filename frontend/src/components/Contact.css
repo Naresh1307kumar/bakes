@@ -65,9 +65,9 @@
 }
 
 .contact-card {
-  background: rgba(32, 21, 18, 0.8);
+  background: rgba(28, 18, 16, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   padding: 1.4rem 1.6rem;
   display: flex;
@@ -78,17 +78,12 @@
 
 .contact-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(229, 169, 60, 0.4);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(229, 169, 60, 0.1);
 }
 
 .contact-icon-box {
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: rgba(229, 169, 60, 0.12);
-  border: 1px solid var(--border-subtle);
-  color: var(--gold-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,10 +91,76 @@
   transition: var(--transition);
 }
 
-.contact-card:hover .contact-icon-box {
-  background: var(--gold-accent);
-  color: #140d0b;
-  transform: scale(1.08);
+/* Card 1: WhatsApp Primary */
+.card-whatsapp {
+  border-color: rgba(37, 211, 102, 0.25);
+}
+.card-whatsapp .contact-icon-box {
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  color: #25d366;
+}
+.card-whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.6);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(37, 211, 102, 0.15);
+}
+.card-whatsapp:hover .contact-icon-box {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #ffffff;
+}
+
+/* Card 2: Alternate Line - Warm Amber */
+.card-phone {
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.card-phone .contact-icon-box {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
+}
+.card-phone:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.15);
+}
+.card-phone:hover .contact-icon-box {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+}
+
+/* Card 3: Location - Ruby Rose */
+.card-location {
+  border-color: rgba(244, 63, 94, 0.25);
+}
+.card-location .contact-icon-box {
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  color: #f43f5e;
+}
+.card-location:hover {
+  border-color: rgba(244, 63, 94, 0.6);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(244, 63, 94, 0.15);
+}
+.card-location:hover .contact-icon-box {
+  background: linear-gradient(135deg, #f43f5e, #be123c);
+  color: #ffffff;
+}
+
+/* Card 4: Delivery - Cyan Sky */
+.card-delivery {
+  border-color: rgba(6, 182, 212, 0.25);
+}
+.card-delivery .contact-icon-box {
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: #06b6d4;
+}
+.card-delivery:hover {
+  border-color: rgba(6, 182, 212, 0.6);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(6, 182, 212, 0.15);
+}
+.card-delivery:hover .contact-icon-box {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: #ffffff;
 }
 
 .contact-card-text {
@@ -327,8 +388,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: transparent;
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--text-main);
   display: flex;
   align-items: center;
@@ -336,12 +397,28 @@
   transition: var(--transition);
 }
 
-.social-icon:hover {
-  background: var(--gold-accent);
-  border-color: var(--gold-accent);
-  color: #140d0b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--gold-glow);
+.social-ig:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: #dc2743;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4);
+}
+
+.social-wa:hover {
+  background: #25d366;
+  border-color: #25d366;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+.social-fb:hover {
+  background: #1877f2;
+  border-color: #1877f2;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);
 }
 
 .copyright-bar {

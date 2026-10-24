@@ -91,7 +91,7 @@ export default function MenuSection() {
             const total = item.price * qty;
 
             return (
-              <div key={item.id} className="menu-card">
+              <div key={item.id} className={`menu-card signature-card-${item.id}`}>
 
                 {/* Product Image & Badges */}
                 <div className="menu-card-img-wrap">

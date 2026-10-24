@@ -110,7 +110,7 @@ export default function Offers() {
             return (
               <div 
                 key={offer.id} 
-                className={`offer-card ${offer.featured ? 'featured-card' : ''}`}
+                className={`offer-card offer-theme-${offer.id} ${offer.featured ? 'featured-card' : ''}`}
               >
                 {offer.tag && (
                   <div className="offer-tag-pill">

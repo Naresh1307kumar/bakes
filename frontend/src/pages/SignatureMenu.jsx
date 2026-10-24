@@ -275,28 +275,28 @@ export default function SignatureMenu() {
           {/* Filter Categories Tabs */}
           <div className="menu-filter-tabs">
             <button 
-              className={`filter-tab ${activeTab === 'all' ? 'active' : ''}`}
+              className={`filter-tab tab-all ${activeTab === 'all' ? 'active' : ''}`}
               onClick={() => setActiveTab('all')}
             >
               All Items ({ALL_PRODUCTS.length})
             </button>
             <button 
-              className={`filter-tab ${activeTab === 'dreamcakes' ? 'active' : ''}`}
+              className={`filter-tab tab-dreamcakes ${activeTab === 'dreamcakes' ? 'active' : ''}`}
               onClick={() => setActiveTab('dreamcakes')}
             >
-              Dream Cakes (3)
+              Dream Cakes ({ALL_PRODUCTS.filter(p => p.category === 'dreamcakes').length})
             </button>
             <button 
-              className={`filter-tab ${activeTab === 'brownies' ? 'active' : ''}`}
+              className={`filter-tab tab-brownies ${activeTab === 'brownies' ? 'active' : ''}`}
               onClick={() => setActiveTab('brownies')}
             >
-              Brownies & Slabs (4)
+              Brownies & Slabs ({ALL_PRODUCTS.filter(p => p.category === 'brownies').length})
             </button>
             <button 
-              className={`filter-tab ${activeTab === 'snacks' ? 'active' : ''}`}
+              className={`filter-tab tab-snacks ${activeTab === 'snacks' ? 'active' : ''}`}
               onClick={() => setActiveTab('snacks')}
             >
-              Mini Bytes & Treats (6)
+              Mini Bytes & Treats ({ALL_PRODUCTS.filter(p => p.category === 'snacks').length})
             </button>
           </div>
 
@@ -307,7 +307,7 @@ export default function SignatureMenu() {
               const totalPrice = product.price * qty;
 
               return (
-                <div key={product.id} className="product-slab-card">
+                <div key={product.id} className={`product-slab-card card-cat-${product.category}`}>
                   
                   {/* Image Container with Tag */}
                   <div className="product-img-wrapper">
@@ -317,7 +317,7 @@ export default function SignatureMenu() {
                       className="product-image"
                       loading="lazy"
                     />
-                    <div className="product-tag-chip">
+                    <div className={`product-tag-chip tag-cat-${product.category}`}>
                       {product.tag}
                     </div>
                     <div className="product-weight-chip">

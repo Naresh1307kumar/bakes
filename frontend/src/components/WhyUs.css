@@ -1,7 +1,10 @@
 .why-us-section {
   position: relative;
   padding: 6rem 5% 5rem;
-  background: linear-gradient(180deg, rgba(28, 18, 15, 0.98) 0%, rgba(19, 13, 11, 0.96) 100%);
+  background: 
+    radial-gradient(circle at 10% 25%, rgba(16, 185, 129, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 90% 75%, rgba(6, 182, 212, 0.06) 0%, transparent 45%),
+    linear-gradient(180deg, #110e14 0%, #17111b 50%, #100c13 100%);
   scroll-margin-top: 80px;
 }
 
@@ -21,9 +24,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(229, 169, 60, 0.12);
-  border: 1px solid var(--border-subtle);
-  color: var(--gold-light);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #6ee7b7;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 1px;
@@ -57,9 +60,9 @@
 }
 
 .pillar-card {
-  background: rgba(32, 21, 18, 0.8);
+  background: rgba(26, 20, 27, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 2rem 1.6rem;
   display: flex;
@@ -70,8 +73,100 @@
 
 .pillar-card:hover {
   transform: translateY(-7px);
-  border-color: rgba(229, 169, 60, 0.4);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(229, 169, 60, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Themed Pillars */
+/* 1. Homemade Quality - Warm Amber Flame */
+.pillar-homemade {
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.pillar-homemade .pillar-icon-box {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
+}
+.pillar-homemade .pillar-tag {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fde68a;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.pillar-homemade:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.15);
+}
+.pillar-homemade:hover .pillar-icon-box {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+}
+
+/* 2. Pure Ingredients - Fresh Mint Emerald */
+.pillar-ingredients {
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.pillar-ingredients .pillar-icon-box {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+}
+.pillar-ingredients .pillar-tag {
+  background: rgba(16, 185, 129, 0.12);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.pillar-ingredients:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(16, 185, 129, 0.15);
+}
+.pillar-ingredients:hover .pillar-icon-box {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+}
+
+/* 3. Doorstep Delivery - Sky Cyan */
+.pillar-delivery {
+  border-color: rgba(6, 182, 212, 0.25);
+}
+.pillar-delivery .pillar-icon-box {
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: #06b6d4;
+}
+.pillar-delivery .pillar-tag {
+  background: rgba(6, 182, 212, 0.12);
+  color: #67e8f9;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+.pillar-delivery:hover {
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(6, 182, 212, 0.15);
+}
+.pillar-delivery:hover .pillar-icon-box {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: #ffffff;
+}
+
+/* 4. Perfect Gifting - Sweet Ruby Berry */
+.pillar-gifting {
+  border-color: rgba(244, 63, 94, 0.25);
+}
+.pillar-gifting .pillar-icon-box {
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  color: #f43f5e;
+}
+.pillar-gifting .pillar-tag {
+  background: rgba(244, 63, 94, 0.12);
+  color: #fda4af;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+.pillar-gifting:hover {
+  border-color: rgba(244, 63, 94, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(244, 63, 94, 0.15);
+}
+.pillar-gifting:hover .pillar-icon-box {
+  background: linear-gradient(135deg, #f43f5e, #e11d48);
+  color: #ffffff;
 }
 
 .pillar-top {

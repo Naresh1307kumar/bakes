@@ -62,7 +62,7 @@ export default function WhyUs() {
           {PILLARS.map((pillar) => {
             const Icon = pillar.icon;
             return (
-              <div key={pillar.id} className="pillar-card">
+              <div key={pillar.id} className={`pillar-card pillar-${pillar.id}`}>
                 
                 <div className="pillar-top">
                   <div className="pillar-icon-box">
