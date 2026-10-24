@@ -1,85 +1,99 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, MessageSquare, Phone, Check, Award, MapPin, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { Sparkles, MessageSquare, Phone, Check, Award, MapPin, ArrowLeft, CheckCircle2, ExternalLink, Gift, Box } from 'lucide-react';
 import './SignatureMenu.css';
 
-const DEFAULT_PRODUCTS = [
+const CATALOGUE_URL = 'https://wa.me/c/9797223080031';
+
+const ALL_PRODUCTS = [
+  // Signature Slabs
   {
     id: 1,
-    name: 'Classic Brownie',
+    category: 'slabs',
+    name: 'Classic Brownie Slab',
     price: 400,
     weight: '1/2 KG Slab',
     image: '/assets/images/classic.png',
-    tag: 'Timeless Original',
-    description: 'Our traditional recipe featuring a deep, rich dark chocolate base with the signature glossy, crinkly top crust that brownie purists love.',
+    tag: 'Signature Slab',
+    description: 'Our traditional recipe featuring a deep, rich dark chocolate base with our signature glossy, crinkly top crust.',
     highlights: ['Pure Dutch Cocoa', 'Glossy Crinkly Crust', 'Melt-in-mouth Texture']
   },
   {
     id: 2,
-    name: 'Nutella Brownie',
+    category: 'slabs',
+    name: 'Nutella Brownie Slab',
     price: 450,
     weight: '1/2 KG Slab',
     image: '/assets/images/nutella.png',
     tag: 'Bestseller',
-    description: 'Swirled generously with silky authentic hazelnut Nutella spread both inside the batter and on top for an ultra-decadent experience.',
+    description: 'Swirled generously with silky authentic hazelnut Nutella spread both inside the batter and on top for an ultra-decadent bite.',
     highlights: ['Real Hazelnut Nutella', 'Gooey Fudgy Core', 'Creamy Chocolate Swirls']
   },
   {
     id: 3,
-    name: 'Fudgy Brownie',
+    category: 'slabs',
+    name: 'Fudgy Brownie Slab',
     price: 450,
     weight: '1/2 KG Slab',
     image: '/assets/images/fudgy.png',
     tag: 'Dense & Rich',
-    description: 'Intensely dense, moist, and loaded with pockets of molten chocolate. Specially crafted for true dark chocolate connoisseurs.',
+    description: 'Intensely dense, moist, and loaded with pockets of molten chocolate. Specially crafted for true dark chocolate lovers.',
     highlights: ['Double Dark Chocolate', 'Ultra Moist & Dense', 'Molten Cocoa Pockets']
   },
   {
     id: 4,
-    name: 'Nutty Brownie',
+    category: 'slabs',
+    name: 'Nutty Brownie Slab',
     price: 500,
     weight: '1/2 KG Slab',
     image: '/assets/images/nutty.png',
     tag: 'Premium Crunch',
-    description: 'Generously packed with slow-roasted Californian walnuts and crunchy cashews, creating the perfect balance of chocolate richness and crunch.',
+    description: 'Generously packed with slow-roasted Californian walnuts and crunchy cashews, balancing rich cocoa with a nutty bite.',
     highlights: ['Roasted Walnuts & Cashews', 'Crunchy Textured Bite', 'Pairs Great with Ice Cream']
+  },
+
+  // Combo Boxes (from Brand Catalogue)
+  {
+    id: 5,
+    category: 'combos',
+    name: 'Mini Combo Box',
+    price: 150,
+    weight: '4 Brownies + 2 Cookies',
+    image: '/assets/images/classic.png',
+    tag: 'Value Combo',
+    description: 'The perfect snacking combo box containing 4 bite-sized chocolate brownies and 2 freshly baked artisan cookies.',
+    highlights: ['4 Brownies', '2 Artisan Cookies', 'Freshly Baked Combo']
+  },
+  {
+    id: 6,
+    category: 'combos',
+    name: 'Medium Combo Box',
+    price: 200,
+    weight: '5 Brownies + 3 Cookies',
+    image: '/assets/images/nutella.png',
+    tag: 'Popular Combo',
+    description: 'Our most popular sharing pack. Includes 5 decadent fudgy brownies accompanied by 3 rich chocolate cookies.',
+    highlights: ['5 Brownies', '3 Chocolate Cookies', 'Perfect for Small Gatherings']
+  },
+  {
+    id: 7,
+    category: 'combos',
+    name: 'Grand Celebration Gift Box',
+    price: 550,
+    weight: 'Assorted Premium Box',
+    image: '/assets/images/hero.png',
+    tag: 'Festive & Gifting',
+    description: 'Luxurious gift-wrapped box featuring assorted brownie slices, cookies, and personalized greeting ribbons. Perfect for birthdays & festivals.',
+    highlights: ['Assorted Flavors', 'Satin Ribbon Packaging', 'Free Greeting Card']
   }
 ];
 
 export default function SignatureMenu() {
-  const [products, setProducts] = useState(DEFAULT_PRODUCTS);
-  const [quantities, setQuantities] = useState({ 1: 1, 2: 1, 3: 1, 4: 1 });
+  const [activeTab, setActiveTab] = useState('all');
+  const [quantities, setQuantities] = useState({ 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1 });
 
-  // Smooth scroll to top on page load
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
-  // Fetch products from Java backend if running
-  useEffect(() => {
-    fetch('http://localhost:8080/api/products')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
-          const merged = DEFAULT_PRODUCTS.map((item, idx) => {
-            const remote = data[idx];
-            if (remote) {
-              return {
-                ...item,
-                name: remote.name || item.name,
-                price: remote.price || item.price,
-                weight: remote.weight ? `${remote.weight} Slab` : item.weight,
-                description: remote.description || item.description
-              };
-            }
-            return item;
-          });
-          setProducts(merged);
-        }
-      })
-      .catch(() => {
-        // Fallback to default local items
-      });
   }, []);
 
   const updateQuantity = (id, delta) => {
@@ -89,14 +103,19 @@ export default function SignatureMenu() {
     }));
   };
 
+  const filteredProducts = activeTab === 'all' 
+    ? ALL_PRODUCTS 
+    : ALL_PRODUCTS.filter(p => p.category === activeTab);
+
   const getOrderWhatsAppLink = (product) => {
     const qty = quantities[product.id] || 1;
     const totalPrice = product.price * qty;
     const message = encodeURIComponent(
-      `Hello Zugar Zinger! I would like to order:\n\n` +
+      `Hello Zugar Zinger! I would like to order from your catalogue:\n\n` +
       `🍫 *${product.name}*\n` +
-      `📦 Quantity: *${qty} Slab(s)* (${product.weight})\n` +
+      `📦 Quantity: *${qty} Box(es)* (${product.weight})\n` +
       `💰 Total: *₹${totalPrice}*\n\n` +
+      `Catalogue Ref: ${CATALOGUE_URL}\n` +
       `Please let me know the delivery timeline to my address in Madurai.`
     );
     return `https://wa.me/919489443693?text=${message}`;
@@ -105,7 +124,7 @@ export default function SignatureMenu() {
   return (
     <div className="menu-page-root">
       
-      {/* Clean Standalone Header for Signature Menu Tab */}
+      {/* Clean Standalone Header */}
       <header className="standalone-menu-nav">
         <div className="standalone-nav-container">
           <div className="standalone-brand-wrap">
@@ -116,15 +135,20 @@ export default function SignatureMenu() {
             <div className="standalone-brand">
               <span className="brand-icon">✨</span>
               <span className="brand-text">Zugar Zinger</span>
-              <span className="standalone-tag">Signature Slabs</span>
+              <span className="standalone-tag">Full Menu & Catalogue</span>
             </div>
           </div>
 
           <div className="standalone-actions">
-            <span className="standalone-location">
-              <MapPin size={15} color="#e5a93c" />
-              <span>Madurai</span>
-            </span>
+            <a 
+              href={CATALOGUE_URL} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-whatsapp-catalogue-nav"
+            >
+              <ExternalLink size={15} />
+              <span>WhatsApp Catalogue</span>
+            </a>
             <a href="tel:9489443693" className="btn-standalone-call">
               <Phone size={15} />
               <span>Call: 94894 43693</span>
@@ -133,7 +157,7 @@ export default function SignatureMenu() {
         </div>
       </header>
 
-      {/* Main Content: ONLY the Signature Menu Content */}
+      {/* Main Content */}
       <main className="menu-page-main">
         <div className="menu-container">
 
@@ -141,22 +165,33 @@ export default function SignatureMenu() {
           <div className="menu-header">
             <div className="menu-badge">
               <Sparkles size={16} />
-              <span>Artisanal 1/2 KG Slabs</span>
+              <span>Zugar Zinger Bakehouse</span>
             </div>
             <h1 className="menu-title">
-              Our Signature <span className="highlight-text">Brownie Slabs</span>
+              Our Complete <span className="highlight-text">Menu & Catalogue</span>
             </h1>
             <p className="menu-subtitle">
-              Pure chocolate bliss handcrafted in half-kilogram slabs. Baked fresh on order in Madurai using pure dairy butter, premium cocoa, and zero preservatives.
+              Explore our complete handcrafted collection — from decadent 1/2 KG signature brownie slabs to mini combo boxes and festive gift hampers.
             </p>
           </div>
 
-          {/* Bulk Discount Notice Banner */}
-          <div className="menu-offer-banner">
-            <div className="banner-badge">SPECIAL OFFER</div>
-            <p>
-              🎉 Ordering in bulk? Enjoy <strong>5% OFF</strong> on 5+ boxes & <strong>10% OFF</strong> on 10+ boxes! Door delivery available across Madurai.
-            </p>
+          {/* Official WhatsApp Catalogue Direct Banner */}
+          <div className="catalogue-direct-banner">
+            <div className="catalogue-banner-info">
+              <span className="live-pill">LIVE ON WHATSAPP</span>
+              <h3>Official WhatsApp Business Catalogue</h3>
+              <p>Browse our live WhatsApp catalogue, view updated seasonal specials, and order directly in one tap.</p>
+            </div>
+            <a 
+              href={CATALOGUE_URL} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-open-catalogue-main"
+            >
+              <MessageSquare size={18} />
+              <span>Open in WhatsApp Catalogue</span>
+              <ExternalLink size={16} />
+            </a>
           </div>
 
           {/* Order Confirmation Assurance Banner */}
@@ -167,9 +202,31 @@ export default function SignatureMenu() {
             </p>
           </div>
 
-          {/* Product Slabs Grid */}
+          {/* Filter Categories Tabs */}
+          <div className="catalogue-filter-tabs">
+            <button 
+              className={`filter-tab ${activeTab === 'all' ? 'active' : ''}`}
+              onClick={() => setActiveTab('all')}
+            >
+              All Items ({ALL_PRODUCTS.length})
+            </button>
+            <button 
+              className={`filter-tab ${activeTab === 'slabs' ? 'active' : ''}`}
+              onClick={() => setActiveTab('slabs')}
+            >
+              1/2 KG Signature Slabs
+            </button>
+            <button 
+              className={`filter-tab ${activeTab === 'combos' ? 'active' : ''}`}
+              onClick={() => setActiveTab('combos')}
+            >
+              Combo Boxes & Hampers
+            </button>
+          </div>
+
+          {/* Product Cards Grid */}
           <div className="products-grid">
-            {products.map((product) => {
+            {filteredProducts.map((product) => {
               const qty = quantities[product.id] || 1;
               const totalPrice = product.price * qty;
 
@@ -235,7 +292,7 @@ export default function SignatureMenu() {
                         </button>
                       </div>
 
-                      {/* WhatsApp Order Button (Hover-only highlight) */}
+                      {/* WhatsApp Order Button */}
                       <a 
                         href={getOrderWhatsAppLink(product)}
                         target="_blank"
@@ -243,15 +300,15 @@ export default function SignatureMenu() {
                         className="btn-order-slab"
                       >
                         <MessageSquare size={16} />
-                        <span>Order ({qty} × ₹{product.price} = ₹{totalPrice})</span>
+                        <span>Order (₹{totalPrice})</span>
                       </a>
 
-                      {/* Confirmation hint */}
-                      <p className="card-confirm-hint">
-                        ✓ Once confirmed, you will receive an order confirmation message on WhatsApp.
-                      </p>
-
                     </div>
+
+                    {/* Confirmation hint */}
+                    <p className="card-confirm-hint">
+                      ✓ Once confirmed, you will receive an order confirmation message on WhatsApp.
+                    </p>
 
                   </div>
 
@@ -265,14 +322,23 @@ export default function SignatureMenu() {
             <div className="callout-left">
               <Award size={36} color="#e5a93c" />
               <div>
-                <h3>Need an Assorted Box or Gifting Hamper?</h3>
-                <p>Can't decide on one flavor? We can mix and match slabs or create customized celebration hampers with personalized message cards.</p>
+                <h3>Need Custom Party Orders or Event Platters?</h3>
+                <p>We customize gift boxes with personalized ribbons and greeting notes for birthdays, anniversaries, and corporate events across Madurai.</p>
               </div>
             </div>
             <div className="callout-actions">
-              <a href="tel:9489443693" className="btn-callout-call">
+              <a 
+                href={CATALOGUE_URL} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-callout-call"
+              >
+                <ExternalLink size={16} />
+                <span>Open WhatsApp Catalogue</span>
+              </a>
+              <a href="tel:9489443693" className="btn-callout-call secondary-callout">
                 <Phone size={16} />
-                <span>Call: 94894 43693</span>
+                <span>Call Kitchen: 94894 43693</span>
               </a>
             </div>
           </div>

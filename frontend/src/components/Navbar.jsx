@@ -56,7 +56,7 @@ export default function Navbar() {
 
           {/* Desktop Links */}
           <div className="nav-links">
-            <a href="#!" onClick={(e) => e.preventDefault()} className="nav-item" style={{ cursor: 'pointer' }}>Menu</a>
+            <a href={getAnchorHref('#menu')} className="nav-item">Menu</a>
             <a href={getAnchorHref('#offers')} className="nav-item">Offers</a>
             <a href={getAnchorHref('#why-us')} className="nav-item">Why Us</a>
             <a href={getAnchorHref('#contact')} className="nav-item">Contact</a>
@@ -104,8 +104,9 @@ export default function Navbar() {
 
         {/* Drawer Navigation Links */}
         <div className="drawer-nav-list">
-          <a href="#!" onClick={(e) => e.preventDefault()} className="drawer-link">
-            <span>🍫 Menu</span>
+          <a href={getAnchorHref('#menu')} className="drawer-link" onClick={closeMenu}>
+            <span>🍫 Signature Menu</span>
+            <ChevronRight size={18} className="chevron" />
           </a>
           <a href={getAnchorHref('#offers')} className="drawer-link" onClick={closeMenu}>
             <span>🎁 Special Offers & Deals</span>

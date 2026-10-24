@@ -34,7 +34,7 @@ export default function Hero() {
               rel="noopener noreferrer" 
               className="btn-hero-primary"
             >
-              <span>View Signature Menu</span>
+              <span>View All Menu</span>
               <ArrowRight size={18} />
             </a>
             <a href="tel:9489443693" className="btn-hero-secondary">
