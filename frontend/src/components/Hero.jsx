@@ -28,18 +28,13 @@ export default function Hero() {
 
           {/* Action CTAs */}
           <div className="hero-actions delay-200 animate-fade-in">
-            <a 
-              href="/menu" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link 
+              to="/menu" 
               className="btn-hero-primary"
             >
               <span>View All Menu</span>
               <ArrowRight size={18} />
-            </a>
-            <a href="#order" className="btn-hero-secondary">
-              <span>Quick Order</span>
-            </a>
+            </Link>
           </div>
 
           {/* Quick Stats / Social Proof */}
