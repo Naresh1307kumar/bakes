@@ -124,28 +124,35 @@ export default function SignatureMenu() {
       {/* Clean Standalone Header */}
       <header className="standalone-menu-nav">
         <div className="standalone-nav-container">
-          <div className="standalone-brand-wrap">
+          
+          <div className="standalone-nav-left">
             <Link to="/" className="btn-back-to-home" title="Return to home page">
               <ArrowLeft size={16} />
-              <span>Back to Home</span>
+              <span className="back-text-desktop">Back to Home</span>
+              <span className="back-text-mobile">Home</span>
             </Link>
-            <div className="standalone-brand">
-              <span className="brand-icon">✨</span>
-              <span className="brand-text">Zugar Zinger</span>
-              <span className="standalone-tag">Full Menu</span>
-            </div>
           </div>
 
-          <div className="standalone-actions">
+          <div className="standalone-nav-center">
+            <Link to="/" className="standalone-brand">
+              <span className="brand-icon">✨</span>
+              <span className="brand-text">Zugar Zinger</span>
+            </Link>
+            <span className="standalone-tag">Full Menu</span>
+          </div>
+
+          <div className="standalone-nav-right">
             <div className="standalone-delivery-badge">
               <MapPin size={15} color="#e5a93c" />
               <span>Door Delivery in Madurai</span>
             </div>
-            <a href="tel:9489443693" className="btn-standalone-call">
+            <a href="tel:9489443693" className="btn-standalone-call" aria-label="Call kitchen">
               <Phone size={15} />
-              <span>Call: 94894 43693</span>
+              <span className="call-text-desktop">Call: 94894 43693</span>
+              <span className="call-text-mobile">Call</span>
             </a>
           </div>
+
         </div>
       </header>
 

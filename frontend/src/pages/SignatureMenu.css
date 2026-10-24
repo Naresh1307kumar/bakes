@@ -26,7 +26,7 @@
   background: rgba(19, 13, 11, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 1.1rem 5%;
+  padding: 0.95rem 5%;
   z-index: 100;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
@@ -37,12 +37,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
-.standalone-brand-wrap {
+.standalone-nav-left {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  flex: 1;
+  justify-content: flex-start;
 }
 
 .btn-back-to-home {
@@ -57,6 +59,7 @@
   padding: 0.45rem 1.1rem;
   border-radius: 50px;
   transition: var(--transition);
+  white-space: nowrap;
 }
 
 .btn-back-to-home:hover {
@@ -67,12 +70,29 @@
   box-shadow: 0 4px 15px var(--gold-glow);
 }
 
-.standalone-brand {
+.back-text-mobile {
+  display: none;
+}
+
+.back-text-desktop {
+  display: inline;
+}
+
+.standalone-nav-center {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.standalone-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
+  white-space: nowrap;
 }
 
 .standalone-brand .brand-text {
@@ -80,6 +100,7 @@
   background: linear-gradient(135deg, #fce09b 0%, #e5a93c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  white-space: nowrap;
 }
 
 .standalone-tag {
@@ -91,12 +112,15 @@
   border: 1px solid var(--border-subtle);
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
+  white-space: nowrap;
 }
 
-.standalone-actions {
+.standalone-nav-right {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .standalone-delivery-badge {
@@ -110,15 +134,7 @@
   border: 1px solid var(--border-subtle);
   padding: 0.35rem 0.85rem;
   border-radius: 50px;
-}
-
-.standalone-location {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.88rem;
-  color: var(--gold-light);
-  font-weight: 500;
+  white-space: nowrap;
 }
 
 .btn-standalone-call {
@@ -133,6 +149,7 @@
   padding: 0.5rem 1.2rem;
   border-radius: 50px;
   transition: var(--transition);
+  white-space: nowrap;
 }
 
 .btn-standalone-call:hover {
@@ -140,6 +157,14 @@
   color: #140d0b;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px var(--gold-glow);
+}
+
+.call-text-mobile {
+  display: none;
+}
+
+.call-text-desktop {
+  display: inline;
 }
 
 /* Main Container */
@@ -595,31 +620,226 @@
     justify-content: center;
   }
 
-  .standalone-actions {
-    gap: 0.8rem;
-  }
-
-  .standalone-location,
   .standalone-delivery-badge {
     display: none;
   }
 }
 
-@media (max-width: 600px) {
-  .product-order-controls {
-    flex-direction: column;
+@media (max-width: 768px) {
+  .standalone-menu-nav {
+    padding: 0.65rem 4%;
   }
 
-  .quantity-box {
-    width: 100%;
-    justify-content: space-between;
+  .standalone-nav-container {
+    gap: 0.4rem;
   }
 
-  .btn-order-slab {
-    width: 100%;
+  .standalone-nav-left {
+    flex: 0 0 auto;
+  }
+
+  .standalone-nav-center {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .standalone-nav-right {
+    flex: 0 0 auto;
   }
 
   .standalone-tag {
     display: none;
+  }
+
+  .back-text-desktop {
+    display: none;
+  }
+
+  .back-text-mobile {
+    display: inline;
+  }
+
+  .btn-back-to-home {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    gap: 0.35rem;
+  }
+
+  .standalone-brand {
+    font-size: 1.15rem;
+    gap: 0.35rem;
+  }
+
+  .call-text-desktop {
+    display: none;
+  }
+
+  .call-text-mobile {
+    display: inline;
+  }
+
+  .btn-standalone-call {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    gap: 0.35rem;
+  }
+
+  .menu-page-main {
+    padding: 1.6rem 4% 3rem;
+  }
+
+  .menu-header {
+    margin-bottom: 1.6rem;
+  }
+
+  .menu-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .menu-title {
+    font-size: 1.85rem;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+
+  .menu-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .order-confirmation-banner {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.6rem;
+    gap: 0.65rem;
+  }
+
+  .order-confirmation-banner p {
+    font-size: 0.82rem;
+  }
+
+  /* Swiggy/Zomato horizontal smooth touch scroll filter tabs */
+  .menu-filter-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.8rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .menu-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-tab {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 0.45rem 1rem;
+    font-size: 0.82rem;
+  }
+
+  .products-grid {
+    gap: 1.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .product-slab-card {
+    border-radius: 18px;
+  }
+
+  .product-img-wrapper {
+    height: 200px;
+  }
+
+  .product-card-body {
+    padding: 1.25rem;
+  }
+
+  .product-name {
+    font-size: 1.25rem;
+  }
+
+  .product-price .amount {
+    font-size: 1.45rem;
+  }
+
+  .product-desc {
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-highlights {
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .highlight-tag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .product-order-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .quantity-box {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .btn-order-slab {
+    flex: 1;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  .menu-custom-callout {
+    padding: 1.5rem 1.2rem;
+    border-radius: 18px;
+    gap: 1.2rem;
+  }
+
+  .callout-left h3 {
+    font-size: 1.15rem;
+  }
+
+  .callout-left p {
+    font-size: 0.85rem;
+  }
+
+  .callout-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .btn-callout-call {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn-back-to-home {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.75rem;
+  }
+
+  .standalone-brand {
+    font-size: 1.05rem;
+  }
+
+  .btn-standalone-call {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.75rem;
   }
 }
