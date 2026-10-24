@@ -88,13 +88,13 @@ const ALL_PRODUCTS = [
   {
     id: 14,
     category: 'brownies',
-    name: 'Custom Celebration Brownie Slab',
+    name: 'Loaded Caramel Walnut Brownie Slab',
     price: 550,
-    weight: '1/2 KG Custom Message Slab',
-    image: '/assets/images/mom_dad_brownie_slab.jpg',
-    tag: 'Personalized Special',
-    description: 'Custom message brownie slab iced with piped greetings ("MOM DAD", Names, Anniversaries), glossy chocolate waves, and edible pearls.',
-    highlights: ['Custom Name & Message', 'Golden Pearl Accents', 'Rich Chocolate Swirls']
+    weight: '1/2 KG Nutty Slab',
+    image: '/assets/images/nutty_caramel_slab.jpg',
+    tag: 'Caramel Nutty Delight',
+    description: 'Thick gourmet brownie slab loaded with roasted walnuts, pecans, and almonds, drenched in warm sea-salt butter caramel drizzle.',
+    highlights: ['Loaded Roasted Nuts', 'Sea Salt Caramel Drizzle', 'Rich Belgian Cocoa']
   },
   {
     id: 15,
