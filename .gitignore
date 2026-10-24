@@ -1,0 +1,17 @@
+# Node / Vite dependencies and build outputs
+node_modules/
+dist/
+.vite/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Java build files
+backend/bin/
+backend/target/
+*.class
+
+# Logs & temp
+*.log
+.DS_Store
+Thumbs.db
