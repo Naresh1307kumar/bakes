@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MessageSquare, Sparkles, Check, CheckCircle2, ArrowRight } from 'lucide-react';
+import DeliveryModal from './DeliveryModal';
 import './MenuSection.css';
 
 const SIGNATURE_SLABS = [
@@ -47,6 +48,7 @@ const SIGNATURE_SLABS = [
 
 export default function MenuSection() {
   const [quantities, setQuantities] = useState({ 1: 1, 2: 1, 3: 1, 4: 1 });
+  const [activeModalProduct, setActiveModalProduct] = useState(null);
 
   const updateQuantity = (id, delta) => {
     setQuantities(prev => ({
@@ -137,19 +139,18 @@ export default function MenuSection() {
                       </button>
                     </div>
 
-                    <a 
-                      href={getWhatsAppLink(item)}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button 
+                      type="button"
+                      onClick={() => setActiveModalProduct(item)}
                       className="btn-menu-order"
                     >
                       <MessageSquare size={15} />
                       <span>Order (₹{total})</span>
-                    </a>
+                    </button>
                   </div>
 
                   <p className="menu-confirm-hint">
-                    ✓ Confirmed via instant WhatsApp message
+                    ✓ Enter address & location for door delivery
                   </p>
 
                 </div>
@@ -158,19 +159,27 @@ export default function MenuSection() {
           })}
         </div>
 
-        {/* Link to Full Catalogue */}
+        {/* Link to Full Menu */}
         <div className="menu-home-footer-cta">
           <p>Looking for Combo Boxes, Cookies, and Celebration Gift Packs?</p>
           <a 
             href="/menu" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="btn-view-all-catalogue"
+            className="btn-view-all-menu"
           >
-            <span>View All Menu & WhatsApp Catalogue</span>
+            <span>View All Menu</span>
             <ArrowRight size={16} />
           </a>
         </div>
+
+        {/* Swiggy/Zomato style Delivery Address Modal */}
+        <DeliveryModal 
+          isOpen={!!activeModalProduct}
+          onClose={() => setActiveModalProduct(null)}
+          product={activeModalProduct}
+          quantity={activeModalProduct ? quantities[activeModalProduct.id] || 1 : 1}
+        />
 
       </div>
     </section>

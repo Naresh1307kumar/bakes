@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, MessageSquare, Phone, Check, Award, MapPin, ArrowLeft, CheckCircle2, ExternalLink, Gift, Box } from 'lucide-react';
+import { Sparkles, MessageSquare, Phone, Check, Award, ArrowLeft, CheckCircle2, Truck, MapPin } from 'lucide-react';
+import DeliveryModal from '../components/DeliveryModal';
 import './SignatureMenu.css';
 
-const CATALOGUE_URL = 'https://wa.me/c/9797223080031';
-
 const ALL_PRODUCTS = [
-  // Signature Slabs
+  // 1/2 KG Signature Slabs
   {
     id: 1,
     category: 'slabs',
@@ -52,7 +51,7 @@ const ALL_PRODUCTS = [
     highlights: ['Roasted Walnuts & Cashews', 'Crunchy Textured Bite', 'Pairs Great with Ice Cream']
   },
 
-  // Combo Boxes (from Brand Catalogue)
+  // Combo Boxes & Packs
   {
     id: 5,
     category: 'combos',
@@ -62,7 +61,7 @@ const ALL_PRODUCTS = [
     image: '/assets/images/classic.png',
     tag: 'Value Combo',
     description: 'The perfect snacking combo box containing 4 bite-sized chocolate brownies and 2 freshly baked artisan cookies.',
-    highlights: ['4 Brownies', '2 Artisan Cookies', 'Freshly Baked Combo']
+    highlights: ['4 Fudgy Brownies', '2 Artisan Cookies', 'Freshly Baked Daily']
   },
   {
     id: 6,
@@ -71,9 +70,9 @@ const ALL_PRODUCTS = [
     price: 200,
     weight: '5 Brownies + 3 Cookies',
     image: '/assets/images/nutella.png',
-    tag: 'Popular Combo',
+    tag: 'Popular Sharing Box',
     description: 'Our most popular sharing pack. Includes 5 decadent fudgy brownies accompanied by 3 rich chocolate cookies.',
-    highlights: ['5 Brownies', '3 Chocolate Cookies', 'Perfect for Small Gatherings']
+    highlights: ['5 Decadent Brownies', '3 Chocolate Cookies', 'Perfect for Small Gatherings']
   },
   {
     id: 7,
@@ -85,12 +84,24 @@ const ALL_PRODUCTS = [
     tag: 'Festive & Gifting',
     description: 'Luxurious gift-wrapped box featuring assorted brownie slices, cookies, and personalized greeting ribbons. Perfect for birthdays & festivals.',
     highlights: ['Assorted Flavors', 'Satin Ribbon Packaging', 'Free Greeting Card']
+  },
+  {
+    id: 8,
+    category: 'combos',
+    name: 'Choco Chunk Cookies Pack',
+    price: 180,
+    weight: 'Pack of 6 Cookies',
+    image: '/assets/images/fudgy.png',
+    tag: 'Artisan Cookies',
+    description: 'Crisp on the edges and soft-baked chewy in the center, loaded with premium melted chocolate chunks.',
+    highlights: ['100% Butter Baked', 'Loaded Choco Chunks', 'No Added Preservatives']
   }
 ];
 
 export default function SignatureMenu() {
   const [activeTab, setActiveTab] = useState('all');
-  const [quantities, setQuantities] = useState({ 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1 });
+  const [quantities, setQuantities] = useState({ 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1 });
+  const [activeModalProduct, setActiveModalProduct] = useState(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -107,20 +118,6 @@ export default function SignatureMenu() {
     ? ALL_PRODUCTS 
     : ALL_PRODUCTS.filter(p => p.category === activeTab);
 
-  const getOrderWhatsAppLink = (product) => {
-    const qty = quantities[product.id] || 1;
-    const totalPrice = product.price * qty;
-    const message = encodeURIComponent(
-      `Hello Zugar Zinger! I would like to order from your catalogue:\n\n` +
-      `🍫 *${product.name}*\n` +
-      `📦 Quantity: *${qty} Box(es)* (${product.weight})\n` +
-      `💰 Total: *₹${totalPrice}*\n\n` +
-      `Catalogue Ref: ${CATALOGUE_URL}\n` +
-      `Please let me know the delivery timeline to my address in Madurai.`
-    );
-    return `https://wa.me/919489443693?text=${message}`;
-  };
-
   return (
     <div className="menu-page-root">
       
@@ -135,20 +132,15 @@ export default function SignatureMenu() {
             <div className="standalone-brand">
               <span className="brand-icon">✨</span>
               <span className="brand-text">Zugar Zinger</span>
-              <span className="standalone-tag">Full Menu & Catalogue</span>
+              <span className="standalone-tag">Full Menu</span>
             </div>
           </div>
 
           <div className="standalone-actions">
-            <a 
-              href={CATALOGUE_URL} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-whatsapp-catalogue-nav"
-            >
-              <ExternalLink size={15} />
-              <span>WhatsApp Catalogue</span>
-            </a>
+            <div className="standalone-delivery-badge">
+              <MapPin size={15} color="#e5a93c" />
+              <span>Door Delivery in Madurai</span>
+            </div>
             <a href="tel:9489443693" className="btn-standalone-call">
               <Phone size={15} />
               <span>Call: 94894 43693</span>
@@ -168,42 +160,23 @@ export default function SignatureMenu() {
               <span>Zugar Zinger Bakehouse</span>
             </div>
             <h1 className="menu-title">
-              Our Complete <span className="highlight-text">Menu & Catalogue</span>
+              Our Complete <span className="highlight-text">Menu & Delights</span>
             </h1>
             <p className="menu-subtitle">
-              Explore our complete handcrafted collection — from decadent 1/2 KG signature brownie slabs to mini combo boxes and festive gift hampers.
+              Explore our complete handcrafted collection — freshly baked 1/2 KG brownie slabs, mini snack boxes, crunchy cookies, and celebration gift hampers delivered to your doorstep in Madurai.
             </p>
-          </div>
-
-          {/* Official WhatsApp Catalogue Direct Banner */}
-          <div className="catalogue-direct-banner">
-            <div className="catalogue-banner-info">
-              <span className="live-pill">LIVE ON WHATSAPP</span>
-              <h3>Official WhatsApp Business Catalogue</h3>
-              <p>Browse our live WhatsApp catalogue, view updated seasonal specials, and order directly in one tap.</p>
-            </div>
-            <a 
-              href={CATALOGUE_URL} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-open-catalogue-main"
-            >
-              <MessageSquare size={18} />
-              <span>Open in WhatsApp Catalogue</span>
-              <ExternalLink size={16} />
-            </a>
           </div>
 
           {/* Order Confirmation Assurance Banner */}
           <div className="order-confirmation-banner">
-            <CheckCircle2 size={20} color="#4ade80" className="banner-confirm-icon" />
+            <CheckCircle2 size={22} color="#4ade80" className="banner-confirm-icon" />
             <p>
-              <strong>Order Confirmation:</strong> Once your order is confirmed, you will receive an official confirmation message on WhatsApp with your order summary and delivery time.
+              <strong>Order Confirmation:</strong> Once you enter your address and submit your order, you will receive an official confirmation message on WhatsApp with your invoice and estimated delivery arrival time.
             </p>
           </div>
 
           {/* Filter Categories Tabs */}
-          <div className="catalogue-filter-tabs">
+          <div className="menu-filter-tabs">
             <button 
               className={`filter-tab ${activeTab === 'all' ? 'active' : ''}`}
               onClick={() => setActiveTab('all')}
@@ -214,13 +187,13 @@ export default function SignatureMenu() {
               className={`filter-tab ${activeTab === 'slabs' ? 'active' : ''}`}
               onClick={() => setActiveTab('slabs')}
             >
-              1/2 KG Signature Slabs
+              1/2 KG Signature Slabs (4)
             </button>
             <button 
               className={`filter-tab ${activeTab === 'combos' ? 'active' : ''}`}
               onClick={() => setActiveTab('combos')}
             >
-              Combo Boxes & Hampers
+              Combo Boxes & Cookie Packs (4)
             </button>
           </div>
 
@@ -292,22 +265,21 @@ export default function SignatureMenu() {
                         </button>
                       </div>
 
-                      {/* WhatsApp Order Button */}
-                      <a 
-                        href={getOrderWhatsAppLink(product)}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      {/* Swiggy/Zomato style Order Trigger Button */}
+                      <button 
+                        type="button"
+                        onClick={() => setActiveModalProduct(product)}
                         className="btn-order-slab"
                       >
                         <MessageSquare size={16} />
                         <span>Order (₹{totalPrice})</span>
-                      </a>
+                      </button>
 
                     </div>
 
-                    {/* Confirmation hint */}
+                    {/* Delivery prompt hint */}
                     <p className="card-confirm-hint">
-                      ✓ Once confirmed, you will receive an order confirmation message on WhatsApp.
+                      ✓ Enter address & location pin for door delivery
                     </p>
 
                   </div>
@@ -327,21 +299,29 @@ export default function SignatureMenu() {
               </div>
             </div>
             <div className="callout-actions">
-              <a 
-                href={CATALOGUE_URL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn-callout-call"
-              >
-                <ExternalLink size={16} />
-                <span>Open WhatsApp Catalogue</span>
-              </a>
-              <a href="tel:9489443693" className="btn-callout-call secondary-callout">
+              <a href="tel:9489443693" className="btn-callout-call">
                 <Phone size={16} />
                 <span>Call Kitchen: 94894 43693</span>
               </a>
+              <a 
+                href="https://wa.me/919489443693?text=Hi%20Zugar%20Zinger,%20I%20would%20like%20to%20inquire%20about%20a%20custom%20order!" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-callout-call secondary-callout"
+              >
+                <MessageSquare size={16} />
+                <span>WhatsApp Kitchen</span>
+              </a>
             </div>
           </div>
+
+          {/* Swiggy/Zomato Delivery Address Modal */}
+          <DeliveryModal 
+            isOpen={!!activeModalProduct}
+            onClose={() => setActiveModalProduct(null)}
+            product={activeModalProduct}
+            quantity={activeModalProduct ? quantities[activeModalProduct.id] || 1 : 1}
+          />
 
         </div>
       </main>

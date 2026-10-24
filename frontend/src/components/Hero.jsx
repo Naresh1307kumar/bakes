@@ -37,8 +37,8 @@ export default function Hero() {
               <span>View All Menu</span>
               <ArrowRight size={18} />
             </a>
-            <a href="tel:9489443693" className="btn-hero-secondary">
-              <span>Order via WhatsApp / Call</span>
+            <a href="#order" className="btn-hero-secondary">
+              <span>Quick Order</span>
             </a>
           </div>
 

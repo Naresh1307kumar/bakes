@@ -57,9 +57,10 @@ export default function Navbar() {
           {/* Desktop Links */}
           <div className="nav-links">
             <a href={getAnchorHref('#menu')} className="nav-item">Menu</a>
+            <a href={getAnchorHref('#order')} className="nav-item">Quick Order</a>
             <a href={getAnchorHref('#offers')} className="nav-item">Offers</a>
             <a href={getAnchorHref('#why-us')} className="nav-item">Why Us</a>
-            <a href={getAnchorHref('#contact')} className="nav-item">Contact</a>
+            <a href={getAnchorHref('#contact')} className="nav-item">Inquiries</a>
             <a href="tel:9489443693" className="btn-nav-action">
               <Phone size={16} />
               <span>Order: 94894 43693</span>
@@ -108,6 +109,10 @@ export default function Navbar() {
             <span>🍫 Signature Menu</span>
             <ChevronRight size={18} className="chevron" />
           </a>
+          <a href={getAnchorHref('#order')} className="drawer-link" onClick={closeMenu}>
+            <span>🛵 Quick Order (Swiggy Style)</span>
+            <ChevronRight size={18} className="chevron" />
+          </a>
           <a href={getAnchorHref('#offers')} className="drawer-link" onClick={closeMenu}>
             <span>🎁 Special Offers & Deals</span>
             <ChevronRight size={18} className="chevron" />
@@ -117,7 +122,7 @@ export default function Navbar() {
             <ChevronRight size={18} className="chevron" />
           </a>
           <a href={getAnchorHref('#contact')} className="drawer-link" onClick={closeMenu}>
-            <span>📍 Contact & Location</span>
+            <span>💬 Ask a Question / Inquiry</span>
             <ChevronRight size={18} className="chevron" />
           </a>
         </div>

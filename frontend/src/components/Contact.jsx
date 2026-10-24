@@ -1,35 +1,38 @@
 import React, { useState } from 'react';
-import { Phone, MapPin, Truck, Clock, MessageSquare, Send, CheckCircle2, Heart, Instagram, Facebook } from 'lucide-react';
+import { Phone, MapPin, Truck, Clock, MessageSquare, Send, CheckCircle2, Heart, Instagram, Facebook, HelpCircle } from 'lucide-react';
 import './Contact.css';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [inquiryData, setInquiryData] = useState({
     name: '',
     phone: '',
-    flavor: 'Classic Brownie (₹400)',
-    quantity: '1 Slab (1/2 KG)',
+    topic: 'General Question',
     message: ''
   });
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setInquiryData({ ...inquiryData, [e.target.name]: e.target.value });
   };
 
-  const handleWhatsAppSubmit = (e) => {
+  const handleInquirySubmit = (e) => {
     e.preventDefault();
+    if (!inquiryData.name.trim() || !inquiryData.phone.trim() || !inquiryData.message.trim()) {
+      alert('Please fill out your name, phone number, and question.');
+      return;
+    }
+
     const text = encodeURIComponent(
-      `*New Brownie Order / Inquiry - Zugar Zinger*\n\n` +
-      `👤 *Name:* ${formData.name || 'Not specified'}\n` +
-      `📞 *Phone:* ${formData.phone || 'Not specified'}\n` +
-      `🍫 *Selected Flavor:* ${formData.flavor}\n` +
-      `📦 *Quantity:* ${formData.quantity}\n` +
-      (formData.message ? `📝 *Notes/Address:* ${formData.message}\n` : '') +
-      `\nPlease confirm the availability and delivery details. Thank you!`
+      `*Customer Inquiry - Zugar Zinger*\n\n` +
+      `👤 *Name:* ${inquiryData.name.trim()}\n` +
+      `📞 *Phone / WhatsApp:* ${inquiryData.phone.trim()}\n` +
+      `📌 *Topic:* ${inquiryData.topic}\n` +
+      `💬 *Question / Message:*\n${inquiryData.message.trim()}\n\n` +
+      `Please reply with more information. Thank you!`
     );
     window.open(`https://wa.me/919489443693?text=${text}`, '_blank');
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
@@ -39,18 +42,18 @@ export default function Contact() {
         {/* Header */}
         <div className="contact-header">
           <div className="contact-badge">
-            <Phone size={16} />
-            <span>Connect & Order</span>
+            <HelpCircle size={16} />
+            <span>Customer Inquiries & Support</span>
           </div>
           <h2 className="contact-title">
-            Get in Touch with <span className="highlight-text">Zugar Zinger</span>
+            Ask Us a <span className="highlight-text">Question</span>
           </h2>
           <p className="contact-subtitle">
-            Freshly baked in Madurai. Call, WhatsApp, or send an inquiry below to order your handcrafted brownie slabs or book custom party orders.
+            Have questions about ingredients, bulk catering, customized party boxes, or delivery areas in Madurai? Send us an inquiry below and we'll reply right away.
           </p>
         </div>
 
-        {/* Main Content Grid: Info on Left, Quick Order Form on Right */}
+        {/* Main Content Grid: Info on Left, Inquiry Form on Right */}
         <div className="contact-grid">
           
           {/* Left Column: Direct Contact Info Cards */}
@@ -61,11 +64,11 @@ export default function Contact() {
                 <Phone size={24} />
               </div>
               <div className="contact-card-text">
-                <span className="card-label">Primary Order Line</span>
+                <span className="card-label">Primary Kitchen Line</span>
                 <a href="tel:9489443693" className="contact-link">
                   +91 94894 43693
                 </a>
-                <p className="card-hint">Call or WhatsApp for immediate orders</p>
+                <p className="card-hint">Call or WhatsApp for immediate help</p>
               </div>
             </div>
 
@@ -74,11 +77,11 @@ export default function Contact() {
                 <Phone size={24} />
               </div>
               <div className="contact-card-text">
-                <span className="card-label">Alternate Hotline</span>
+                <span className="card-label">Alternate Line</span>
                 <a href="tel:9789231215" className="contact-link">
                   +91 97892 31215
                 </a>
-                <p className="card-hint">Quick inquiries & bulk event support</p>
+                <p className="card-hint">Quick questions & bulk event queries</p>
               </div>
             </div>
 
@@ -89,7 +92,7 @@ export default function Contact() {
               <div className="contact-card-text">
                 <span className="card-label">Kitchen Location</span>
                 <span className="contact-highlight-info">Madurai, Tamil Nadu</span>
-                <p className="card-hint">Artisanal home kitchen baked fresh daily</p>
+                <p className="card-hint">Fresh home kitchen baked fresh daily</p>
               </div>
             </div>
 
@@ -106,41 +109,41 @@ export default function Contact() {
 
             <div className="delivery-timing-pill">
               <Clock size={18} color="#e5a93c" />
-              <span>Orders taken 7 Days a Week • 9:00 AM – 9:00 PM</span>
+              <span>Available 7 Days a Week • 9:00 AM – 9:00 PM</span>
             </div>
 
           </div>
 
-          {/* Right Column: Interactive WhatsApp Order Form */}
+          {/* Right Column: Inquiry Form Only */}
           <div className="contact-form-col">
             <div className="form-card">
               <div className="form-header">
-                <h3>Quick Order & Inquiries</h3>
-                <p>Fill out the details below to generate a pre-filled WhatsApp message directly to our kitchen.</p>
+                <h3>Send Us an Inquiry</h3>
+                <p>Submit your question below. It will open in WhatsApp so we can answer you directly.</p>
               </div>
 
-              <form onSubmit={handleWhatsAppSubmit} className="order-form">
+              <form onSubmit={handleInquirySubmit} className="order-form">
                 
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="name">Your Name</label>
+                    <label htmlFor="inquiry-name">Your Name *</label>
                     <input 
                       type="text" 
-                      id="name" 
+                      id="inquiry-name" 
                       name="name" 
-                      value={formData.name} 
+                      value={inquiryData.name} 
                       onChange={handleChange} 
                       placeholder="e.g. Priya Sharma"
                       required
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="phone">Phone / WhatsApp</label>
+                    <label htmlFor="inquiry-phone">Phone / WhatsApp *</label>
                     <input 
                       type="tel" 
-                      id="phone" 
+                      id="inquiry-phone" 
                       name="phone" 
-                      value={formData.phone} 
+                      value={inquiryData.phone} 
                       onChange={handleChange} 
                       placeholder="e.g. 98765 43210"
                       required
@@ -148,54 +151,39 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="flavor">Select Flavor (1/2 KG)</label>
-                    <select id="flavor" name="flavor" value={formData.flavor} onChange={handleChange}>
-                      <option value="Classic Brownie (₹400)">Classic Brownie – ₹400</option>
-                      <option value="Nutella Brownie (₹450)">Nutella Brownie – ₹450</option>
-                      <option value="Fudgy Brownie (₹450)">Fudgy Brownie – ₹450</option>
-                      <option value="Nutty Brownie (₹500)">Nutty Brownie – ₹500</option>
-                      <option value="Custom Bulk / Assorted Boxes">Custom Bulk / Assorted Boxes</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="quantity">Quantity</label>
-                    <select id="quantity" name="quantity" value={formData.quantity} onChange={handleChange}>
-                      <option value="1 Slab (1/2 KG)">1 Slab (1/2 KG)</option>
-                      <option value="2 Slabs (1 KG)">2 Slabs (1 KG)</option>
-                      <option value="3 Slabs (1.5 KG)">3 Slabs (1.5 KG)</option>
-                      <option value="5+ Slabs (5% Discount Applied)">5+ Slabs (5% Off)</option>
-                      <option value="10+ Slabs (10% Discount Applied)">10+ Slabs (10% Off)</option>
-                    </select>
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="inquiry-topic">Topic of Inquiry *</label>
+                  <select id="inquiry-topic" name="topic" value={inquiryData.topic} onChange={handleChange}>
+                    <option value="General Question">General Question</option>
+                    <option value="Bulk Catering & Event Orders">Bulk Catering & Event Orders</option>
+                    <option value="Custom Festive Gifting Hampers">Custom Festive Gifting Hampers</option>
+                    <option value="Delivery Area & Pincode Check">Delivery Area & Pincode Check</option>
+                    <option value="Allergy & Ingredient Question">Allergy & Ingredient Question</option>
+                  </select>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="message">Delivery Address / Special Notes (Optional)</label>
+                  <label htmlFor="inquiry-message">Your Question / Message *</label>
                   <textarea 
-                    id="message" 
+                    id="inquiry-message" 
                     name="message" 
-                    rows="3" 
-                    value={formData.message} 
+                    rows="4" 
+                    value={inquiryData.message} 
                     onChange={handleChange} 
-                    placeholder="Area in Madurai, preferred delivery time, or custom gifting note..."
+                    placeholder="Ask us anything about our brownies, delivery timing, or custom orders..."
+                    required
                   ></textarea>
                 </div>
 
                 <button type="submit" className="btn-send-whatsapp">
                   <MessageSquare size={18} />
-                  <span>Send Order via WhatsApp</span>
+                  <span>Send Inquiry via WhatsApp</span>
                 </button>
 
-                <p className="form-confirm-note">
-                  ✓ Once your order is confirmed, you will receive an official confirmation message on WhatsApp.
-                </p>
-
-                {formSubmitted && (
+                {submitted && (
                   <div className="submit-feedback">
                     <CheckCircle2 size={16} color="#4ade80" />
-                    <span>Order sent! You will receive your confirmation message on WhatsApp shortly.</span>
+                    <span>Inquiry sent! We will answer your question on WhatsApp shortly.</span>
                   </div>
                 )}
 
@@ -213,7 +201,8 @@ export default function Contact() {
           </div>
 
           <div className="footer-links">
-            <a href="#menu">Menu</a>
+            <a href="#menu">Signature Menu</a>
+            <a href="#order">Quick Order</a>
             <a href="#offers">Offers</a>
             <a href="#why-us">Why Us</a>
             <a href="#contact">Contact</a>

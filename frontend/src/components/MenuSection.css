@@ -266,7 +266,7 @@
   font-weight: 500;
 }
 
-.btn-view-all-catalogue {
+.btn-view-all-menu {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -280,7 +280,7 @@
   transition: var(--transition);
 }
 
-.btn-view-all-catalogue:hover {
+.btn-view-all-menu:hover {
   background: var(--gold-accent);
   color: #140d0b;
   transform: translateY(-2px);
@@ -304,7 +304,7 @@
     text-align: center;
   }
 
-  .btn-view-all-catalogue {
+  .btn-view-all-menu {
     width: 100%;
     justify-content: center;
   }
