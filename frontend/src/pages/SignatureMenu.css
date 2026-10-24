@@ -181,8 +181,8 @@
 /* Header */
 .menu-header {
   text-align: center;
-  max-width: 720px;
-  margin: 0 auto 2.5rem;
+  max-width: 680px;
+  margin: 0 auto 1.5rem;
 }
 
 .menu-badge {
@@ -192,74 +192,44 @@
   background: rgba(229, 169, 60, 0.12);
   border: 1px solid var(--border-subtle);
   color: var(--gold-light);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 0.4rem 1.1rem;
+  padding: 0.35rem 1rem;
   border-radius: 50px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .menu-title {
-  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--text-main);
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .menu-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.6;
   font-weight: 300;
-}
-
-/* Offer banner strip */
-.menu-offer-banner {
-  background: rgba(32, 21, 18, 0.9);
-  border: 1px solid var(--border-subtle);
-  border-radius: 14px;
-  padding: 0.9rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 3.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.banner-badge {
-  background: var(--gold-accent);
-  color: #140d0b;
-  font-size: 0.72rem;
-  font-weight: 800;
-  padding: 0.25rem 0.65rem;
-  border-radius: 4px;
-  letter-spacing: 0.5px;
-  flex-shrink: 0;
-}
-
-.menu-offer-banner p {
-  font-size: 0.92rem;
-  color: var(--text-main);
-}
-
-.menu-offer-banner strong {
-  color: var(--gold-light);
+  margin: 0 auto;
+  max-width: 580px;
 }
 
 /* Order Confirmation Banner */
 .order-confirmation-banner {
   background: rgba(34, 197, 94, 0.08);
-  border: 1px solid rgba(74, 222, 128, 0.3);
-  border-radius: 14px;
-  padding: 0.95rem 1.4rem;
+  border: 1px solid rgba(74, 222, 128, 0.28);
+  border-radius: 12px;
+  padding: 0.85rem 1.4rem;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  margin-top: -2rem;
-  margin-bottom: 3rem;
+  gap: 0.75rem;
+  max-width: 640px;
+  margin: 1.5rem auto 2.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .banner-confirm-icon {
@@ -267,9 +237,10 @@
 }
 
 .order-confirmation-banner p {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: #e2fced;
   line-height: 1.5;
+  margin: 0;
 }
 
 .order-confirmation-banner strong {
@@ -689,34 +660,35 @@
   }
 
   .menu-header {
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.2rem;
   }
 
   .menu-badge {
     font-size: 0.75rem;
     padding: 0.3rem 0.8rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.65rem;
   }
 
   .menu-title {
-    font-size: 1.85rem;
+    font-size: 1.75rem;
     line-height: 1.25;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.65rem;
   }
 
   .menu-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     line-height: 1.5;
   }
 
   .order-confirmation-banner {
     padding: 0.75rem 1rem;
-    margin-bottom: 1.6rem;
+    margin: 1.2rem auto 2rem;
     gap: 0.65rem;
   }
 
   .order-confirmation-banner p {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
   }
 
   /* Swiggy/Zomato horizontal smooth touch scroll filter tabs */

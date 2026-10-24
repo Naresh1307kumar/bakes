@@ -163,22 +163,22 @@ export default function SignatureMenu() {
           {/* Page Header */}
           <div className="menu-header">
             <div className="menu-badge">
-              <Sparkles size={16} />
+              <Sparkles size={15} />
               <span>Zugar Zinger Bakehouse</span>
             </div>
             <h1 className="menu-title">
               Our Complete <span className="highlight-text">Menu & Delights</span>
             </h1>
             <p className="menu-subtitle">
-              Explore our complete handcrafted collection — freshly baked 1/2 KG brownie slabs, mini snack boxes, crunchy cookies, and celebration gift hampers delivered to your doorstep in Madurai.
+              Freshly baked 1/2 KG brownie slabs, mini snack boxes, and celebration gift hampers delivered across Madurai.
             </p>
           </div>
 
           {/* Order Confirmation Assurance Banner */}
           <div className="order-confirmation-banner">
-            <CheckCircle2 size={22} color="#4ade80" className="banner-confirm-icon" />
+            <CheckCircle2 size={18} color="#4ade80" className="banner-confirm-icon" />
             <p>
-              <strong>Order Confirmation:</strong> Once you enter your address and submit your order, you will receive an official confirmation message on WhatsApp with your invoice and estimated delivery arrival time.
+              <strong>Order Confirmation:</strong> Once placed, you will receive an official confirmation message on WhatsApp with your invoice and live delivery arrival time.
             </p>
           </div>
 
