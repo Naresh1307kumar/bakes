@@ -211,6 +211,42 @@
   color: var(--gold-light);
 }
 
+/* Order Confirmation Banner */
+.order-confirmation-banner {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 14px;
+  padding: 0.95rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: -2rem;
+  margin-bottom: 3rem;
+}
+
+.banner-confirm-icon {
+  flex-shrink: 0;
+}
+
+.order-confirmation-banner p {
+  font-size: 0.92rem;
+  color: #e2fced;
+  line-height: 1.5;
+}
+
+.order-confirmation-banner strong {
+  color: #4ade80;
+}
+
+.card-confirm-hint {
+  font-size: 0.76rem;
+  color: #4ade80;
+  text-align: center;
+  width: 100%;
+  margin-top: 0.4rem;
+  opacity: 0.9;
+}
+
 /* Products Grid */
 .products-grid {
   display: grid;

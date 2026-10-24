@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, MessageSquare, Phone, Check, Award, MapPin, ArrowLeft } from 'lucide-react';
+import { Sparkles, MessageSquare, Phone, Check, Award, MapPin, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import './SignatureMenu.css';
 
 const DEFAULT_PRODUCTS = [
@@ -159,6 +159,14 @@ export default function SignatureMenu() {
             </p>
           </div>
 
+          {/* Order Confirmation Assurance Banner */}
+          <div className="order-confirmation-banner">
+            <CheckCircle2 size={20} color="#4ade80" className="banner-confirm-icon" />
+            <p>
+              <strong>Order Confirmation:</strong> Once your order is confirmed, you will receive an official confirmation message on WhatsApp with your order summary and delivery time.
+            </p>
+          </div>
+
           {/* Product Slabs Grid */}
           <div className="products-grid">
             {products.map((product) => {
@@ -237,6 +245,11 @@ export default function SignatureMenu() {
                         <MessageSquare size={16} />
                         <span>Order ({qty} × ₹{product.price} = ₹{totalPrice})</span>
                       </a>
+
+                      {/* Confirmation hint */}
+                      <p className="card-confirm-hint">
+                        ✓ Once confirmed, you will receive an order confirmation message on WhatsApp.
+                      </p>
 
                     </div>
 

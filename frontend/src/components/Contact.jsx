@@ -188,10 +188,14 @@ export default function Contact() {
                   <span>Send Order via WhatsApp</span>
                 </button>
 
+                <p className="form-confirm-note">
+                  ✓ Once your order is confirmed, you will receive an official confirmation message on WhatsApp.
+                </p>
+
                 {formSubmitted && (
                   <div className="submit-feedback">
                     <CheckCircle2 size={16} color="#4ade80" />
-                    <span>WhatsApp opened with your order details!</span>
+                    <span>Order sent! You will receive your confirmation message on WhatsApp shortly.</span>
                   </div>
                 )}
 
