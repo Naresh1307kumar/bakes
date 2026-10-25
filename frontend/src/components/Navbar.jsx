@@ -68,7 +68,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Hamburger Toggle */}
-          <button 
+          <button
             className="mobile-toggle"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open navigation menu"
@@ -79,7 +79,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Backdrop Overlay */}
-      <div 
+      <div
         className={`mobile-backdrop ${mobileMenuOpen ? 'active' : ''}`}
         onClick={closeMenu}
         aria-hidden="true"
@@ -87,14 +87,14 @@ export default function Navbar() {
 
       {/* Mobile Slide-out Side Menu Drawer */}
       <aside className={`mobile-side-drawer ${mobileMenuOpen ? 'open' : ''}`}>
-        
+
         {/* Drawer Header */}
         <div className="drawer-header">
           <Link to="/" className="drawer-brand" onClick={closeMenu}>
             <span className="brand-icon">✨</span>
             <span className="brand-text">Zugar Zinger</span>
           </Link>
-          <button 
+          <button
             className="drawer-close-btn"
             onClick={closeMenu}
             aria-label="Close menu"
@@ -110,7 +110,7 @@ export default function Navbar() {
             <ChevronRight size={18} className="chevron" />
           </a>
           <a href={getAnchorHref('#order')} className="drawer-link" onClick={closeMenu}>
-            <span>🛵 Quick Order (Swiggy Style)</span>
+            <span>🛵 Quick Order</span>
             <ChevronRight size={18} className="chevron" />
           </a>
           <a href={getAnchorHref('#offers')} className="drawer-link" onClick={closeMenu}>
@@ -139,7 +139,7 @@ export default function Navbar() {
               <Phone size={18} />
               <span>Call 94894 43693</span>
             </a>
-            <a 
+            <a
               href="https://wa.me/919489443693?text=Hi%20Zugar%20Zinger,%20I%20would%20like%20to%20order%20brownies!"
               target="_blank"
               rel="noopener noreferrer"
