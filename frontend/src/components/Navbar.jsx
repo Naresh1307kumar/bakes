@@ -57,10 +57,11 @@ export default function Navbar() {
           {/* Desktop Links */}
           <div className="nav-links">
             <a href={getAnchorHref('#menu')} className="nav-item">Menu</a>
+            <a href={getAnchorHref('#about')} className="nav-item">About</a>
+            <a href={getAnchorHref('#reviews')} className="nav-item">Reviews</a>
             <a href={getAnchorHref('#order')} className="nav-item">Quick Order</a>
             <a href={getAnchorHref('#offers')} className="nav-item">Offers</a>
-            <a href={getAnchorHref('#why-us')} className="nav-item">Why Us</a>
-            <a href={getAnchorHref('#contact')} className="nav-item">Inquiries</a>
+            <a href={getAnchorHref('#contact')} className="nav-item">Contact</a>
             <a href="tel:9489443693" className="btn-nav-action">
               <Phone size={16} />
               <span>Order: 94894 43693</span>
@@ -109,16 +110,20 @@ export default function Navbar() {
             <span>🍫 Signature Menu</span>
             <ChevronRight size={18} className="chevron" />
           </a>
+          <a href={getAnchorHref('#about')} className="drawer-link" onClick={closeMenu}>
+            <span>⭐ About & Promise</span>
+            <ChevronRight size={18} className="chevron" />
+          </a>
+          <a href={getAnchorHref('#reviews')} className="drawer-link" onClick={closeMenu}>
+            <span>❤️ Customer Reviews</span>
+            <ChevronRight size={18} className="chevron" />
+          </a>
           <a href={getAnchorHref('#order')} className="drawer-link" onClick={closeMenu}>
             <span>🛵 Quick Order</span>
             <ChevronRight size={18} className="chevron" />
           </a>
           <a href={getAnchorHref('#offers')} className="drawer-link" onClick={closeMenu}>
             <span>🎁 Special Offers & Deals</span>
-            <ChevronRight size={18} className="chevron" />
-          </a>
-          <a href={getAnchorHref('#why-us')} className="drawer-link" onClick={closeMenu}>
-            <span>⭐ Why Choose Us</span>
             <ChevronRight size={18} className="chevron" />
           </a>
           <a href={getAnchorHref('#contact')} className="drawer-link" onClick={closeMenu}>

@@ -11,6 +11,22 @@
   --gold-glow: rgba(245, 158, 11, 0.28);
   --border-subtle: rgba(245, 158, 11, 0.2);
 
+  /* Specific Section Theme Variables */
+  --menu-bg: #2B1810;
+  --card-bg: #3D2316;
+  --card-border: #5A3622;
+  --gold: #E9B872;
+  --about-bg: #FFF4E6;
+  --about-text: #3E2314;
+  --about-accent: #C9793A;
+  --reviews-bg: #3A1A1A;
+  --review-card: #4A2424;
+  --review-text: #FFE4D1;
+  --cta-bg: #C9793A;
+  --cta-text: #1A0F0A;
+  --footer-bg: #0F0805;
+  --footer-text: #CDB8A3;
+
   /* Colorful Bakery Palette */
   --caramel-copper: #f97316;
   --caramel-glow: rgba(249, 115, 22, 0.25);

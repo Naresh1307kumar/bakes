@@ -40,7 +40,8 @@ const PILLARS = [
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="why-us-section">
+    <section id="about" className="why-us-section">
+      <div id="why-us" style={{ position: 'relative', top: '-80px', visibility: 'hidden' }}></div>
       <div className="why-us-container">
         
         {/* Header */}
