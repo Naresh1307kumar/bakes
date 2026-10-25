@@ -98,14 +98,18 @@
 
 .order-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1.2rem;
+  width: 100%;
 }
 
 .order-input-group {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .order-input-group label {
@@ -119,10 +123,14 @@
 .order-input-group input,
 .order-input-group select,
 .order-input-group textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   background: rgba(19, 13, 11, 0.85);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
-  padding: 0.8rem 1.1rem;
+  padding: 0.8rem 1rem;
   color: var(--text-main);
   font-family: inherit;
   font-size: 0.95rem;
@@ -293,10 +301,62 @@
 }
 
 @media (max-width: 650px) {
+  .quick-order-section {
+    padding: 3.5rem 16px 3rem;
+  }
+  .order-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
   .order-row {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
   }
   .order-card-wrapper {
-    padding: 1.5rem;
+    padding: 16px;
+    border-radius: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .order-pricing-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 12px 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .strip-item {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .btn-place-order-main {
+    font-size: 0.95rem;
+    padding: 14px 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-order-section {
+    padding: 3rem 16px 2.5rem;
+  }
+  .order-title {
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
+  }
+  .order-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 12px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  .btn-gps-detect {
+    font-size: 0.85rem;
+    padding: 12px 14px;
+    width: 100%;
+    box-sizing: border-box;
   }
 }

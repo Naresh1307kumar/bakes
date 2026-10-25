@@ -395,17 +395,81 @@
 }
 
 @media (max-width: 720px) {
+  .offers-section {
+    padding: 3.5rem 16px 3rem;
+  }
+
+  .offers-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
   .offers-grid {
     grid-template-columns: 1fr;
+    gap: 1.8rem;
+    width: 100%;
+  }
+
+  .offer-card {
+    padding: 1.8rem 16px 1.5rem;
+    border-radius: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .custom-order-banner {
+    padding: 16px;
+    border-radius: 18px;
+    gap: 1.2rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .banner-contacts {
     flex-direction: column;
     width: 100%;
+    gap: 0.65rem;
   }
 
   .banner-call-btn {
     width: 100%;
     justify-content: center;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .offers-section {
+    padding: 3rem 16px 2.5rem;
+  }
+
+  .offers-title {
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
+  }
+
+  .offer-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 12px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .offer-card {
+    padding: 1.6rem 14px 1.4rem;
+  }
+
+  .coupon-box {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .btn-copy-code {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-claim-offer {
+    padding: 12px 16px;
   }
 }

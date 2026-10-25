@@ -345,6 +345,8 @@
 
   .hero-content {
     align-items: center;
+    width: 100%;
+    max-width: 100%;
   }
 
   .hero-subtitle {
@@ -366,29 +368,231 @@
 
 @media (max-width: 640px) {
   .hero-section {
-    padding-top: 100px;
+    padding: 85px 16px 16px;
+    min-height: auto;
+    overflow: hidden;
+    position: relative;
   }
 
-  .top-card {
-    left: 0;
+  .hero-container {
+    gap: 2.2rem;
+    padding-bottom: 1.5rem;
+    width: 100%;
+    max-width: 100%;
   }
 
-  .bottom-card {
-    right: 0;
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
   }
 
-  .highlights-container {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+  .hero-badge {
+    font-size: 0.78rem;
+    padding: 0.4rem 16px;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 10px rgba(245, 158, 11, 0.12);
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+    line-height: 1.18;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+    word-break: break-word;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-title br {
+    display: block;
+  }
+
+  .hero-title-highlight {
+    display: inline;
+    filter: drop-shadow(0 2px 10px rgba(245, 158, 11, 0.25));
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin: 0 auto 1.6rem;
+    padding: 0 8px;
+    max-width: 100%;
   }
 
   .hero-actions {
     flex-direction: column;
+    flex-wrap: wrap;
     width: 100%;
+    max-width: 320px;
+    margin: 0 auto 1.8rem;
+    gap: 0.75rem;
   }
 
   .btn-hero-primary, .btn-hero-secondary {
     width: 100%;
+    max-width: 100%;
     justify-content: center;
+    padding: 14px 16px;
+    font-size: 0.98rem;
+    box-sizing: border-box;
+  }
+
+  .hero-proof {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 16px 0 0;
+    text-align: center;
+  }
+
+  .proof-divider {
+    display: none;
+  }
+
+  .delivery-badge {
+    font-size: 0.82rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .rating-text {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .stars {
+    justify-content: center;
+  }
+
+  /* Hero Visual & Floating Cards on Mobile */
+  .visual-wrapper {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .ambient-glow {
+    width: 220px;
+    height: 220px;
+    max-width: 80vw;
+    max-height: 80vw;
+  }
+
+  .hero-brownie-img {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .floating-card {
+    padding: 0.45rem 12px;
+    border-radius: 12px;
+    gap: 0.45rem;
+    max-width: 85%;
+  }
+
+  .floating-icon {
+    font-size: 1.15rem;
+  }
+
+  .floating-label {
+    font-size: 0.78rem;
+  }
+
+  .floating-sub {
+    font-size: 0.68rem;
+  }
+
+  .top-card {
+    top: 6px;
+    left: 6px;
+  }
+
+  .bottom-card {
+    bottom: 6px;
+    right: 6px;
+  }
+
+  /* Highlights Footer */
+  .hero-highlights {
+    padding: 16px;
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .highlights-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .highlight-item {
+    gap: 12px;
+  }
+
+  .highlight-icon-wrap {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+  }
+
+  .highlight-text h4 {
+    font-size: 0.9rem;
+  }
+
+  .highlight-text p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 80px 16px 16px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.8rem, 8vw, 2.35rem);
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 12px;
+  }
+
+  .visual-wrapper {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-section {
+    padding: 75px 12px 14px;
+  }
+
+  .hero-title {
+    font-size: 1.65rem;
+  }
+
+  .visual-wrapper {
+    max-width: 250px;
   }
 }

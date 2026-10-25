@@ -350,20 +350,82 @@
 }
 
 @media (max-width: 680px) {
+  .why-us-section {
+    padding: 3.5rem 16px 3rem;
+  }
+
+  .why-us-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
   .pillars-grid {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+    width: 100%;
+  }
+
+  .pillar-card {
+    padding: 1.5rem 16px;
+    border-radius: 18px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .trust-stats-bar {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 16px;
+    gap: 1.2rem;
+    border-radius: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
   }
 
   .why-us-cta-strip {
     flex-direction: column;
     text-align: center;
+    padding: 16px;
+    border-radius: 18px;
+    gap: 1.2rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .btn-why-cta {
     width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-us-section {
+    padding: 3rem 16px 2.5rem;
+  }
+
+  .why-us-title {
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
+  }
+
+  .why-us-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 12px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .pillar-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .trust-stats-bar {
+    grid-template-columns: 1fr;
   }
 }

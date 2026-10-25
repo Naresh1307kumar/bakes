@@ -710,7 +710,7 @@
   }
 
   .menu-page-main {
-    padding: 1.6rem 4% 3rem;
+    padding: 1.5rem 16px 3rem;
   }
 
   .menu-header {
@@ -724,7 +724,7 @@
   }
 
   .menu-title {
-    font-size: 1.75rem;
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
     line-height: 1.25;
     margin-bottom: 0.65rem;
   }
@@ -849,6 +849,42 @@
   }
 
   .btn-callout-call {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-page-main {
+    padding: 1.25rem 16px 2.5rem;
+  }
+
+  .menu-title {
+    font-size: clamp(1.65rem, 8vw, 2.2rem);
+  }
+
+  .product-slab-card {
+    border-radius: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .product-card-body {
+    padding: 16px;
+  }
+
+  .product-order-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .quantity-box {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-order-slab {
     width: 100%;
     justify-content: center;
   }

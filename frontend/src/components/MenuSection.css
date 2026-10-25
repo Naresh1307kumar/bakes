@@ -410,8 +410,27 @@
 }
 
 @media (max-width: 650px) {
+  .menu-home-section {
+    padding: 3.5rem 16px 3rem;
+  }
+
+  .menu-home-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
   .menu-cards-grid {
     grid-template-columns: 1fr;
+    gap: 1.4rem;
+    width: 100%;
+  }
+
+  .menu-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .menu-card-img-wrap {
+    height: 200px;
   }
 
   .btn-explore-full-menu {
@@ -422,10 +441,37 @@
   .menu-home-footer-cta {
     flex-direction: column;
     text-align: center;
+    padding: 16px;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .btn-view-all-menu {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-home-section {
+    padding: 3rem 16px 2.5rem;
+  }
+
+  .menu-home-title {
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
+  }
+
+  .menu-card-body {
+    padding: 16px;
+  }
+
+  .menu-card-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .btn-menu-order {
+    width: 100%;
   }
 }

@@ -247,14 +247,18 @@
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1.2rem;
+  width: 100%;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .form-group label {
@@ -268,6 +272,10 @@
 .form-group input,
 .form-group select,
 .form-group textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   background: rgba(19, 13, 11, 0.85);
   border: 1px solid var(--border-subtle);
   border-radius: 10px;
@@ -348,6 +356,11 @@
   border-top: 1px solid rgba(229, 169, 60, 0.15);
   flex-wrap: wrap;
   gap: 1.5rem;
+  width: 100%;
+}
+
+.footer-brand {
+  max-width: 100%;
 }
 
 .footer-logo {
@@ -365,7 +378,9 @@
 
 .footer-links {
   display: flex;
-  gap: 1.8rem;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.4rem;
+  max-width: 100%;
 }
 
 .footer-links a {
@@ -446,12 +461,65 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 650px) {
+  .contact-section {
+    padding: 3.5rem 16px 2rem;
+  }
+
+  .contact-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
+  .contact-card {
+    padding: 16px;
+    border-radius: 16px;
+    gap: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
   }
 
   .form-card {
-    padding: 1.5rem;
+    padding: 16px;
+    border-radius: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 3rem 16px 2rem;
+  }
+
+  .contact-title {
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
+  }
+
+  .contact-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 12px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .btn-send-whatsapp {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
