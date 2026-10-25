@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Check, ArrowRight, MessageSquare } from 'lucide-react';
-import DeliveryModal from './DeliveryModal';
+import { Sparkles, Check, ArrowRight } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import './MenuSection.css';
 
 const SIGNATURE_SLABS = [
@@ -49,13 +49,23 @@ const SIGNATURE_SLABS = [
 
 export default function MenuSection() {
   const [quantities, setQuantities] = useState({ 1: 1, 2: 1, 3: 1, 4: 1 });
-  const [activeModalProduct, setActiveModalProduct] = useState(null);
 
   const updateQuantity = (id, delta) => {
     setQuantities(prev => ({
       ...prev,
       [id]: Math.max(1, (prev[id] || 1) + delta)
     }));
+  };
+
+  const getWhatsAppOrderUrl = (item, qty, total) => {
+    const text = 
+      `*Order Request - Zugar Zinger* 🍫✨\n\n` +
+      `🛒 *Item:* ${item.name}\n` +
+      `📦 *Quantity:* ${qty} (${item.weight || 'Box'})\n` +
+      `💰 *Total Price:* ₹${total}\n\n` +
+      `📍 *Location:* Madurai (Doorstep Delivery)\n` +
+      `💬 *Hi Zugar Zinger, I would like to place this order! Please confirm availability and delivery time.*`;
+    return `https://wa.me/919489443693?text=${encodeURIComponent(text)}`;
   };
 
   return (
@@ -138,18 +148,21 @@ export default function MenuSection() {
                       </button>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => setActiveModalProduct(item)}
-                      className="btn-menu-order"
+                    {/* Direct WhatsApp Order Button in Green with WhatsApp Logo */}
+                    <a
+                      href={getWhatsAppOrderUrl(item, qty, total)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-menu-order btn-whatsapp-order"
+                      aria-label={`Order ${item.name} on WhatsApp`}
                     >
-                      <MessageSquare size={15} />
+                      <WhatsAppIcon size={16} color="#ffffff" />
                       <span>Order (₹{total})</span>
-                    </button>
+                    </a>
                   </div>
 
                   <p className="menu-confirm-hint">
-                    ✓ Enter address & location for door delivery
+                    ✓ Direct WhatsApp order • Door delivery in Madurai
                   </p>
 
                 </div>
@@ -157,26 +170,6 @@ export default function MenuSection() {
             );
           })}
         </div>
-
-        {/* Link to Full Menu Footer Strip */}
-        {/* <div className="menu-home-footer-cta">
-          <p>Looking for Rasamalai Dream Cakes, Cookies, Cupcakes & Custom Platters?</p>
-          <Link 
-            to="/menu" 
-            className="btn-view-all-menu"
-          >
-            <span>View All Menu</span>
-            <ArrowRight size={16} />
-          </Link>
-        </div>*/ }
-
-        {/* Swiggy/Zomato style Delivery Address Modal */}
-        <DeliveryModal
-          isOpen={!!activeModalProduct}
-          onClose={() => setActiveModalProduct(null)}
-          product={activeModalProduct}
-          quantity={activeModalProduct ? quantities[activeModalProduct.id] || 1 : 1}
-        />
 
       </div>
     </section>

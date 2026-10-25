@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Phone, MapPin, Truck, Clock, MessageSquare, Send, CheckCircle2, Heart, Instagram, Facebook, HelpCircle } from 'lucide-react';
+import { Phone, MapPin, Truck, Clock, Send, CheckCircle2, Heart, Instagram, Facebook, HelpCircle } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import './Contact.css';
 
 export default function Contact() {
@@ -30,7 +31,15 @@ export default function Contact() {
       `💬 *Question / Message:*\n${inquiryData.message.trim()}\n\n` +
       `Please reply with more information. Thank you!`
     );
-    window.open(`https://wa.me/919489443693?text=${text}`, '_blank');
+    const waUrl = `https://wa.me/919489443693?text=${text}`;
+    try {
+      const newWin = window.open(waUrl, '_blank');
+      if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+        window.location.href = waUrl;
+      }
+    } catch (err) {
+      window.location.href = waUrl;
+    }
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
   };
@@ -176,7 +185,7 @@ export default function Contact() {
                 </div>
 
                 <button type="submit" className="btn-send-whatsapp">
-                  <MessageSquare size={18} />
+                  <WhatsAppIcon size={18} color="#ffffff" />
                   <span>Send Inquiry via WhatsApp</span>
                 </button>
 
@@ -216,7 +225,7 @@ export default function Contact() {
               <Facebook size={18} />
             </a>
             <a href="https://wa.me/919489443693" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="social-icon social-wa">
-              <MessageSquare size={18} />
+              <WhatsAppIcon size={18} color="currentColor" />
             </a>
           </div>
         </div>

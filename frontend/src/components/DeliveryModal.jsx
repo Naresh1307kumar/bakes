@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { X, MapPin, Navigation, MessageSquare, CheckCircle2, ShieldCheck, AlertCircle } from 'lucide-react';
+import { X, MapPin, Navigation, CheckCircle2, ShieldCheck, AlertCircle } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import './DeliveryModal.css';
 
 export default function DeliveryModal({ isOpen, onClose, product, quantity = 1 }) {
@@ -63,7 +64,15 @@ export default function DeliveryModal({ isOpen, onClose, product, quantity = 1 }
       `\n✅ Please confirm the order and delivery timeline. Thank you!`
     );
 
-    window.open(`https://wa.me/919489443693?text=${text}`, '_blank');
+    const waUrl = `https://wa.me/919489443693?text=${text}`;
+    try {
+      const newWin = window.open(waUrl, '_blank');
+      if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+        window.location.href = waUrl;
+      }
+    } catch (err) {
+      window.location.href = waUrl;
+    }
     onClose();
   };
 
@@ -179,7 +188,7 @@ export default function DeliveryModal({ isOpen, onClose, product, quantity = 1 }
 
           {/* Submit Button */}
           <button type="submit" className="btn-modal-submit">
-            <MessageSquare size={18} />
+            <WhatsAppIcon size={18} color="#ffffff" />
             <span>Confirm & Place Order (₹{totalPrice})</span>
           </button>
 

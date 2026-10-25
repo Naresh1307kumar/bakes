@@ -538,7 +538,7 @@
   color: var(--gold-light);
 }
 
-/* WhatsApp Order Button (Hover-only highlight) */
+/* WhatsApp Order Button in Green with WhatsApp Logo */
 .btn-order-slab {
   flex: 1;
   display: inline-flex;
@@ -554,13 +554,20 @@
   border: none;
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.28);
   transition: var(--transition);
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.btn-order-slab:hover {
+.btn-order-slab:hover,
+.btn-order-slab:focus {
   background: linear-gradient(135deg, #34e77b 0%, #0d6d62 100%);
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+.btn-order-slab:visited {
+  color: #ffffff;
 }
 
 /* Callout */

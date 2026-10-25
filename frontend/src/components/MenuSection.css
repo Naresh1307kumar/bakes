@@ -322,24 +322,30 @@
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--about-accent) 100%);
-  color: var(--cta-text);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
   border: none;
   font-weight: 700;
   font-size: 0.85rem;
-  padding: 0.6rem 1rem;
+  padding: 0.65rem 1rem;
   border-radius: 50px;
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(201, 121, 58, 0.3);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
   white-space: nowrap;
+  text-decoration: none;
 }
 
-.btn-menu-order:hover {
-  background: linear-gradient(135deg, #f5c88b 0%, #d8894a 100%);
-  color: var(--cta-text);
+.btn-menu-order:hover,
+.btn-menu-order:focus {
+  background: linear-gradient(135deg, #34e77b 0%, #0d6d62 100%);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(201, 121, 58, 0.45);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+.btn-menu-order:visited {
+  color: #ffffff;
 }
 
 .menu-confirm-hint {

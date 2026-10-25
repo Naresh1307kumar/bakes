@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ShoppingBag, MapPin, Navigation, MessageSquare, CheckCircle2, Phone, Clock } from 'lucide-react';
+import { ShoppingBag, MapPin, Navigation, CheckCircle2, Phone, Clock } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import './QuickOrder.css';
 
 const ORDER_ITEMS = [
@@ -88,7 +89,15 @@ export default function QuickOrder() {
       `\n✅ Please confirm the order and provide the estimated delivery time. Thank you!`
     );
 
-    window.open(`https://wa.me/919489443693?text=${text}`, '_blank');
+    const waUrl = `https://wa.me/919489443693?text=${text}`;
+    try {
+      const newWin = window.open(waUrl, '_blank');
+      if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+        window.location.href = waUrl;
+      }
+    } catch (err) {
+      window.location.href = waUrl;
+    }
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 6000);
   };
@@ -260,7 +269,7 @@ export default function QuickOrder() {
 
             {/* Submit Button */}
             <button type="submit" className="btn-place-order-main">
-              <MessageSquare size={19} />
+              <WhatsAppIcon size={20} color="#ffffff" />
               <span>Confirm & Place Order via WhatsApp (₹{finalTotal})</span>
             </button>
 

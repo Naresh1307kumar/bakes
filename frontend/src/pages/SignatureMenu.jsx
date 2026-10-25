@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, MessageSquare, Phone, Check, Award, ArrowLeft, CheckCircle2, MapPin } from 'lucide-react';
-import DeliveryModal from '../components/DeliveryModal';
+import { Sparkles, Phone, Check, Award, ArrowLeft, CheckCircle2, MapPin } from 'lucide-react';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 import './SignatureMenu.css';
 
 const ALL_PRODUCTS = [
@@ -187,8 +187,6 @@ export default function SignatureMenu() {
     });
     return init;
   });
-  const [activeModalProduct, setActiveModalProduct] = useState(null);
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
@@ -202,6 +200,17 @@ export default function SignatureMenu() {
         [id]: Math.max(minQty, (prev[id] || minQty) + step)
       };
     });
+  };
+
+  const getWhatsAppOrderUrl = (product, qty, total) => {
+    const text = 
+      `*Order Request - Zugar Zinger* 🍫✨\n\n` +
+      `🛒 *Item:* ${product.name}\n` +
+      `📦 *Quantity:* ${qty} (${product.weight || 'Standard'})\n` +
+      `💰 *Total Price:* ₹${total}\n\n` +
+      `📍 *Location:* Madurai (Doorstep Delivery)\n` +
+      `💬 *Hi Zugar Zinger, I would like to place this order! Please confirm availability and delivery time.*`;
+    return `https://wa.me/919489443693?text=${encodeURIComponent(text)}`;
   };
 
   const filteredProducts = activeTab === 'all' 
@@ -370,21 +379,23 @@ export default function SignatureMenu() {
                         </button>
                       </div>
 
-                      {/* Swiggy/Zomato style Order Trigger Button */}
-                      <button 
-                        type="button"
-                        onClick={() => setActiveModalProduct(product)}
+                      {/* Direct WhatsApp Order Button in Green with WhatsApp Logo */}
+                      <a 
+                        href={getWhatsAppOrderUrl(product, qty, totalPrice)}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="btn-order-slab"
+                        aria-label={`Order ${product.name} on WhatsApp`}
                       >
-                        <MessageSquare size={16} />
+                        <WhatsAppIcon size={18} color="#ffffff" />
                         <span>Order (₹{totalPrice})</span>
-                      </button>
+                      </a>
 
                     </div>
 
                     {/* Delivery prompt hint */}
                     <p className="card-confirm-hint">
-                      ✓ Enter address & location pin for door delivery
+                      ✓ Direct WhatsApp order • Door delivery in Madurai
                     </p>
 
                   </div>
@@ -414,19 +425,11 @@ export default function SignatureMenu() {
                 rel="noopener noreferrer" 
                 className="btn-callout-call secondary-callout"
               >
-                <MessageSquare size={16} />
+                <WhatsAppIcon size={16} color="#ffffff" />
                 <span>WhatsApp Kitchen</span>
               </a>
             </div>
           </div>
-
-          {/* Swiggy/Zomato Delivery Address Modal */}
-          <DeliveryModal 
-            isOpen={!!activeModalProduct}
-            onClose={() => setActiveModalProduct(null)}
-            product={activeModalProduct}
-            quantity={activeModalProduct ? quantities[activeModalProduct.id] || 1 : 1}
-          />
 
         </div>
       </main>

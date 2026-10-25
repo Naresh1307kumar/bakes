@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu as MenuIcon, X, Phone, MessageSquare, ChevronRight, MapPin } from 'lucide-react';
+import { Menu as MenuIcon, X, Phone, ChevronRight, MapPin } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -150,7 +151,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className="btn-drawer-whatsapp"
             >
-              <MessageSquare size={18} />
+              <WhatsAppIcon size={18} color="#ffffff" />
               <span>WhatsApp Order</span>
             </a>
           </div>

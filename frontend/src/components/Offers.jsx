@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Tag, Sparkles, Copy, Check, Gift, Users, Heart, ArrowRight } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import './Offers.css';
 
 const DEFAULT_OFFERS = [
@@ -163,6 +164,7 @@ export default function Offers() {
                   rel="noopener noreferrer" 
                   className="btn-claim-offer"
                 >
+                  <WhatsAppIcon size={16} color="#ffffff" />
                   <span>Claim via WhatsApp</span>
                   <ArrowRight size={16} />
                 </a>
